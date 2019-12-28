@@ -5,11 +5,11 @@ package com.ivj.fechas;
  * @author (Israel Vargas)
  * @version (version 1 28-7-2019)
  */
-public class posicionDeMemoria {   
+public class PosicionDeMemoria {   
     /**
      * Constructor for objects of class posicionDeMemoria
      */
-    public posicionDeMemoria(Object objeto)
+    public PosicionDeMemoria(Object objeto)
     {
         posicionMemoria(objeto);
     }
