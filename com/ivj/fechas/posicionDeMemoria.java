@@ -1,14 +1,11 @@
-
+package com.ivj.fechas;
 /**
- * Clase que devuelve en formato string, la posiciÃ³n de memoria en Hexadecimal, ocupada por el objeto pasado como dato.
+ * Clase que devuelve en formato string, la posición de memoria en Hexadecimal ocupada por el objeto pasado como dato.
  * No se puede utilizar para Objectos del tipo String
  * @author (Israel Vargas)
  * @version (version 1 28-7-2019)
  */
-public class posicionDeMemoria
-{
-    
-
+public class posicionDeMemoria {   
     /**
      * Constructor for objects of class posicionDeMemoria
      */
