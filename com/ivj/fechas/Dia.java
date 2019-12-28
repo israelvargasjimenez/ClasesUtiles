@@ -1,5 +1,4 @@
-import java.time.LocalDate;
-import java.util.GregorianCalendar;
+package com.ivj.fechas;
 
 /**
  * Esta clase se utiliza para crear una instancia con los datos de dia de la semana, dia del mes , mes y año
@@ -10,6 +9,8 @@ import java.util.GregorianCalendar;
  * @version (1 a 16-8-2019)
  */
 
+import java.time.LocalDate;
+import java.util.GregorianCalendar;
 
 public class Dia extends GregorianCalendar{
    // Campo que almacena el dia del mes    
@@ -27,11 +28,11 @@ public class Dia extends GregorianCalendar{
     * @return 
     */  
    public  Dia () {
-        // Crea una instancia de la clase GregorianCalendar con la fecha y hora en el momento de la instanciación.
+        // Crea una instancia de la clase GregorianCalendar con la fecha y hora en el momento de la instanciaci�n.
         super();
         setLenient (false);
         
-        // Fija que día es considerado como el primer día de la semana en España.
+        // Fija que d�a que es considerado como el primer día de la semana en España.
         setFirstDayOfWeek(MONDAY);
         
         // Establece cuáles son los días mínimos requeridos en la primera semana del año;
@@ -47,7 +48,7 @@ public class Dia extends GregorianCalendar{
     }
    
    /**
-    * Metodo que devuelve nombre del día de la semana
+    * Metodo que devuelve nombre del d�a de la semana.
     * @param
     * @return dia de la semana String
     */  
@@ -104,7 +105,7 @@ public class Dia extends GregorianCalendar{
    }
    
    /**
-    * Metodo que imprime el día completo
+    * Metodo que imprime el d�a completo
     * @param
     * @return  
     */    
