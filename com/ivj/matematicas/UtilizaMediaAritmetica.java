@@ -8,7 +8,7 @@ public class UtilizaMediaAritmetica {
 
 	public static void main(String[] args) {
 		//Almacena los números introducidos para realizar la media aritmetica
-		ArrayList<Double> numeros = new ArrayList<Double>();
+		ArrayList<Number> numeros = new ArrayList<Number>();
 		//Almacena la suma total de los números introducidos
 		Double sumaTotal = 0.0;
 		//Almacena el número actual
@@ -35,7 +35,7 @@ public class UtilizaMediaAritmetica {
 			}
 		}while (salir == false);
 
-		System.out.println("La media aritmetica es: "+ calculaMediaAritmeticaDouble(numeros));
+		System.out.println("La media aritmetica es: "+ CalculaMedia.calculaMediaAritmetica(numeros));
 	}
 	/**Devuelve el número introducido por el usuario
 	 * @return Double
