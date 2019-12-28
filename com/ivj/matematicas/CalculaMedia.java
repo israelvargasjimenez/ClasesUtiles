@@ -18,14 +18,18 @@ public class CalculaMedia {
 	public static Number mediaAritmetica(ArrayList<Number> numeros) {
 		//Almacena la suma total de los números
 		Double resultado = 0.0;
+		
+		//Almacena el signo a aplicar al final de la media
+		Double signo = 1.0;
 
 		//Contador de numeros distintos de 0
 		int contador = 0;
+		
 
 		//Se itera por toda la colección sumando los numeros que estén almacenados en el ArrayList<Number>
 		for (Number num : numeros) {	
 			Double numeroDouble = (double) num;	
-			if ( numeroDouble != 0) {
+			if ( numeroDouble != 0) {				
 				resultado += numeroDouble;
 				contador++;
 			} else {

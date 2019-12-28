@@ -22,10 +22,10 @@ public class UtilizaMediaAritmetica {
 			try {
 				System.out.println("Introduzca numero real");
 				numeroActual = setNumero();
-				if ( numeroActual > 0) {
+				if ( numeroActual != 0) {
 					numeros.add(numeroActual);
-				} else {
-					//Cuando se introduce un número negativo, se sale del bucle do..while
+				}else {
+					//Cuando se introduce el 0 se sale del bucle do..while
 					salir = true;
 				}
 			}catch (InputMismatchException e ) {
@@ -35,7 +35,7 @@ public class UtilizaMediaAritmetica {
 			}
 		}while (salir == false);
 
-		System.out.println("La media aritmetica es: "+ CalculaMedia.calculaMediaAritmetica(numeros));
+		System.out.println("La media aritmetica es: "+ CalculaMedia.mediaAritmetica(numeros));
 	}
 	/**Devuelve el número introducido por el usuario
 	 * @return Double
