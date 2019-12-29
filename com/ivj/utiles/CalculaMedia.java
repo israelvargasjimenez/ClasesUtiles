@@ -1,4 +1,4 @@
-package com.ivj.matematicas;
+package com.ivj.utiles;
 
 /**
  * Clase que calcula la media aritmetica de los numeros pasados como argunmento

@@ -1,10 +1,9 @@
 package com.ivj.ejecutora;
 
-import com.ivj.matematicas.CalculaMedia;
-
 import java.util.ArrayList;
 
-import com.ivj.fechas.*; 
+import com.ivj.fechas.*;
+import com.ivj.utiles.CalculaMedia; 
 
 public class ClaseEjecutora {
 	public static void main(String[] args) {
