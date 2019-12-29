@@ -1,9 +1,12 @@
-package com.ivj.ejecutora;
+package com.ivj.utilidades;
+
+import com.ivj.utiles.CalculaMedia;
+
 
 import java.util.ArrayList;
 
-import com.ivj.fechas.*;
-import com.ivj.utiles.CalculaMedia; 
+import com.ivj.fechas.*; 
+import com.ivj.utiles.CalculaMedia;
 
 public class ClaseEjecutora {
 	public static void main(String[] args) {
@@ -14,6 +17,7 @@ public class ClaseEjecutora {
 		numm.add(75.3);
 		numm.add(40.5);		
 		
+		new ClaseFecha().imprimirFechaDiaria();
 		System.out.println("La media es: "+ String.format("%.2f",CalculaMedia.mediaAritmetica(numm)));		
 	}
 }
