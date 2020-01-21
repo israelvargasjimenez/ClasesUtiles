@@ -89,4 +89,20 @@ public class LeerDatos {
 						}while ( correcto == false);
 					return numero;
 				}
+				
+				//Metodo que lee un número del tipo Double
+				public static Character setCharacter() {
+					boolean correcto = true;
+					Character caracter = ' ';		
+					do {
+						try {
+							caracter = setFrase().charAt(0);
+							correcto = true;
+						}catch (IndexOutOfBoundsException e) {
+							System.out.println("El caracter tecleado no es válido, intentelo de nuevo.");
+							correcto = false;
+						}
+						}while ( correcto == false);
+					return caracter;
+				}
 }
