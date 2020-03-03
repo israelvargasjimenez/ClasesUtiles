@@ -18,10 +18,9 @@ public class LecturaEscrituraFicheros {
 
 	/**
 	 * Metodo que devuelve true si ha creado el fichero utilizando el String pasado
-	 * como argumento o devuelve false si ya existía el fichero
-	 * 
-	 * @param String direccion
-	 * @return true boolean
+	 * como argumento o devuelve false si ya existía el fichero	 * 
+	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
+	 * @return creado
 	 */
 	public static int crearFichero(boolean debbug) {
 		String path;
@@ -46,10 +45,9 @@ public class LecturaEscrituraFicheros {
 	/**
 	 * Metodo que devuelve 1 si ha creado el directorio correctamente devuelve 0 si
 	 * no se ha creado el directorio devuelve -1 si se ha producido una excepción de
-	 * seguiridad
-	 * 
-	 * @param
-	 * @return creado int
+	 * seguiridad. 
+	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
+	 * @return creado
 	 */
 	public static int crearDirectorio(boolean debbug) {
 		String path;
@@ -76,9 +74,9 @@ public class LecturaEscrituraFicheros {
 	 * absoluta tecleada en consola Devuelve 1 si se ha podido escribir la
 	 * información en el fichero Devuelve 0 si no se ha encontrado el fichero
 	 * Devuelve -1 si se ha producido una excepcion del tipo IOException
-	 * 
-	 * @return 1 si se ha podido escribir la información en el fichero	 * 
-	 * @return -1 si se ha producido una excepcion del tipo IOException
+	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
+	 * @return 1 si se ha podido escribir la información en el fichero	. 
+	 *  -1 si se ha producido una excepcion del tipo IOException
 	 */
 	public static int escribirEnFichero(boolean debbug) {		
 		int creado = 0;
@@ -112,6 +110,7 @@ public class LecturaEscrituraFicheros {
 	/** Metodo que escribe un texto en el fichero que se 
 	 * pasa como argumento
      * @param fichero File
+     * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
      * @return 1 si se escribe correctamente en el fichero
      * @return -1 si no se puede escribir en el fichero
      */    
@@ -141,7 +140,7 @@ public class LecturaEscrituraFicheros {
 
 	/**
 	 * Metodo que leer el fichero pasado como argumento
-	 * 
+	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
 	 * @param fichero File
 	 */
 	public static void leerFichero(File fichero, boolean debbug) {
@@ -166,7 +165,7 @@ public class LecturaEscrituraFicheros {
 	/**
 	 * Metodo que borra el fichero o directorio pasado como argumento Utilizando la
 	 * ubicación del mismo pasada como argumento
-	 * 
+	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
 	 * @param fichero File
 	 */
 
@@ -183,7 +182,7 @@ public class LecturaEscrituraFicheros {
 	/**
 	 * Metodo que borra el fichero o directorio pasado como argumento Utilizando el
 	 * path tecleado por el usuario
-	 * 
+	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
 	 */
 	public static void borraFicheroODirectorio(boolean debbug) {
 		String path;
