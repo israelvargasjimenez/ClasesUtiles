@@ -1,6 +1,14 @@
 package com.ivj.utiles;
 
-import com.ivj.leerDatos.LeerDatos;
+
+/**
+ * Clase que devuelve true si la opción de seguir ejecutando el programa es selecionada
+ * @author SSDIsrael
+ * @version 1.0
+ * 
+ */
+
+
 
 public class SeguirEjecutando {
 
@@ -10,21 +18,30 @@ public class SeguirEjecutando {
 
 	public static boolean seguir() {
 		boolean seguir = false;
+		boolean correcto = true;
 
-		System.out.println("Desea seguir ejecutando el programa:");
-		System.out.println("1- si");
-		System.out.println("2- no");
+		do {
+			System.out.println("Desea seguir ejecutando el programa:");
+			System.out.println("---------------------------------------------");
+			System.out.println("1- Si");
+			System.out.println("2- No");
 
-		switch (LeerDatos.leerInteger()) {
-		case 1:
-			seguir = true;
-			break;
-		case 2:
-			seguir = false;
-			break;
-		default:
-			System.out.println("No ha elegido una opción correcta, se para la ejecución del programa");
-		}
+			switch (LeerDatos.leerInteger()) {
+			case 1:
+				seguir = true;
+				correcto = true;
+				break;
+			case 2:
+				seguir = false;
+				correcto = true;
+				break;
+			default:
+				System.out.println("--------------------------------------");
+				System.out.println("## Elija una opción correcta ##");
+				System.out.println("--------------------------------------");				
+				correcto = false;				
+			}
+		} while (correcto == false);
 		return seguir;
 	}
 }

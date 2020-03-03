@@ -1,4 +1,4 @@
-package com.ivj.leerDatos;
+package com.ivj.utiles;
 
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
