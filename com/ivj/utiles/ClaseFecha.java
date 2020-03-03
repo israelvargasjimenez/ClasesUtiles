@@ -9,7 +9,12 @@ package com.ivj.utiles;
  * @fecha 28-12-2019
  */
 
+//Se importa la clase GregorianCalendar
 import java.util.GregorianCalendar;
+
+//Se importa el paquete java.time
+import java.time.*;
+
 
 public class ClaseFecha extends GregorianCalendar {
 	//Campo que almacena el dia de la semana de la compra de la entrada
