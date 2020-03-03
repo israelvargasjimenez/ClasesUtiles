@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
+import com.ivj.utiles.LeerDatos;
 
 public class LecturaEscrituraFicheros {
 
