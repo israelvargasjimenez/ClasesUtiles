@@ -9,7 +9,12 @@ import java.util.Scanner;
  */
 
 /**
- * @author SSDIsrael
+ * Clase que sirve para leer datos del teclado
+ * Los tipos de datos que lee son: Integer; String; Float; Double; Character.
+ * No se podrá continuar hasta que el tipo de dato tecleado sea el correcto sengún el metodo ejecutado.
+ * @author Israel Vargas Jiménez
+ * @version 1.0
+ * @Fecha 4-3-2020
  *
  */
 public class LeerDatos {
@@ -91,7 +96,7 @@ public class LeerDatos {
 		 * @param 
 		 * @return numero Double 
 		 */
-				public static Double leerDougle() {
+				public static Double leerDouble() {
 					boolean correcto = true;
 					Double numero = 0.0;		
 					do {
