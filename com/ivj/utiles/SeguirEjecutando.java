@@ -3,7 +3,7 @@ package com.ivj.utiles;
 
 /**
  * Clase que devuelve true si la opción de seguir ejecutando el programa es selecionada
- * @author SSDIsrael
+ * @author Israel Vargas Jiménez
  * @version 1.0
  * 
  */
