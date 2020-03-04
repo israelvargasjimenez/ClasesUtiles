@@ -1,34 +1,34 @@
 package com.ivj.utiles;
 
-
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileReader;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
-import com.ivj.utiles.LeerDatos;
+import com.ivj.utiles.LeerDatos;;
+
 
 public class LecturaEscrituraFicheros {
+	boolean debbug;
 
-	public LecturaEscrituraFicheros() {
-		// TODO Auto-generated constructor stub
+	public LecturaEscrituraFicheros(boolean debbug) {
+		this.debbug = debbug;
 	}
 
 	/**
-	 * Metodo que devuelve true si ha creado el fichero utilizando el String pasado
-	 * como argumento o devuelve false si ya existía el fichero	 * 
+	 * Metodo que intenta crear un fichero.
+	 * Devuelve 1 si se ha creado correctamente.
+	 * Devuelve 0 si no se ha podido crear.
+	 * Devuelve -1 si se ha producido una excepción del tipo IOException.
 	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
-	 * @return creado
+	 * @return Devuelve 1 si se ha creado correctamente.Devuelve 0 si no se ha creado correctamente. 
+	 * devuelve -1 si se ha producido una excepción del tipo IOException.
 	 */
 	public static int crearFichero(boolean debbug) {
-		String path;
-		int creado;
-
-		System.out.print("Introduzca path de creación del fichero o directorio:");
-		path = LeerDatos.leerString();
+		String path = devuelvePath();
+		int creado;	
 
 		File ficheroAux = new File(path);
 		try {
@@ -48,14 +48,12 @@ public class LecturaEscrituraFicheros {
 	 * no se ha creado el directorio devuelve -1 si se ha producido una excepción de
 	 * seguiridad. 
 	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
-	 * @return creado
+	 * @return Devuelve 1 si se ha creado correctamente.Devuelve 0 si no se ha creado correctamente. 
+	 * devuelve -1 si se ha producido una excepción del tipo SecurityException.
 	 */
 	public static int crearDirectorio(boolean debbug) {
-		String path;
-		int creado;
-
-		System.out.print("Introduzca path de creación del fichero o directorio:");
-		path = LeerDatos.leerString();
+		String path = devuelvePath();
+		int creado;	
 
 		File ficheroAux = new File(path);
 		try {
@@ -81,9 +79,7 @@ public class LecturaEscrituraFicheros {
 	 */
 	public static int escribirEnFichero(boolean debbug) {		
 		int creado = 0;
-		String path;
-		System.out.print("Introduzca path del fichero:");
-		path = LeerDatos.leerString();
+		String path = devuelvePath();
 
 		File fichero = new File(path);
 
@@ -98,7 +94,7 @@ public class LecturaEscrituraFicheros {
 				creado = 1;
 			} else {			
 				if (debbug) {
-				System.out.println ("----------------------El fichero no existe-----------------------");
+					mensajeNoEncontrado();
 				}
 				throw new FileNotFoundException();
 			}
@@ -129,7 +125,8 @@ public class LecturaEscrituraFicheros {
            }
            else {  
         	   if (debbug) {
-        	   throw new FileNotFoundException ("----------------------El fichero no existe-----------------------");
+        		   mensajeNoEncontrado () ;
+        	   throw new FileNotFoundException (null);
         	   }
            }
         }  
@@ -142,11 +139,11 @@ public class LecturaEscrituraFicheros {
 	/**
 	 * Metodo que leer el fichero pasado como argumento
 	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
-	 * @param fichero File
+	 * @param string File
 	 */
-	public static void leerFichero(File fichero, boolean debbug) {
+	public static void leerFichero(String string, boolean debbug) {
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(fichero));
+			BufferedReader br = new BufferedReader(new FileReader(string));
 			String lineaLeida;
 			while ((lineaLeida = br.readLine()) != null) {
 				System.out.println(lineaLeida);
@@ -154,11 +151,13 @@ public class LecturaEscrituraFicheros {
 			br.close();
 		} catch (FileNotFoundException e) {
 			if (debbug) {
-			System.out.println("No se ha encontrado el fichero para leer el mensaje");
+				mensajeNoEncontrado ();
 			}
 		} catch (IOException e) {
 			if (debbug) {
+			System.out.println("---------------------------------------");
 			System.out.println("Error tratando de leer el fichero");
+			System.out.println("---------------------------------------");
 			}
 		}
 	}
@@ -170,12 +169,15 @@ public class LecturaEscrituraFicheros {
 	 * @param fichero File
 	 */
 
-	public static void borraFichero(File fichero, boolean debbug) {
-		if (fichero.exists() == true) {
-			fichero.delete();
+	public static void borraFichero( boolean debbug) {
+		String path = devuelvePath();		
+		File fileAux = new File(path);
+		
+		if (fileAux.exists() ) {
+			fileAux.delete();
 		} else {
 			if ( debbug) {
-			System.out.println("El fichero o directorio a borrar no existe");
+				mensajeNoEncontrado ();
 			}
 		}
 	}
@@ -186,10 +188,7 @@ public class LecturaEscrituraFicheros {
 	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
 	 */
 	public static void borraFicheroODirectorio(boolean debbug) {
-		String path;
-
-		System.out.print("Introduzca path de creación del fichero o directorio:");
-		path = LeerDatos.leerString();
+		String path = devuelvePath();		
 
 		File ficheroAux = new File(path);
 
@@ -197,8 +196,23 @@ public class LecturaEscrituraFicheros {
 			ficheroAux.delete();
 		} else {
 			if ( debbug) {
-			System.out.println("El fichero o directorio a borrar no existe");
+				mensajeNoEncontrado ();
 			}
 		}
+	}
+	
+	public static String devuelvePath () {
+		String path= null;
+		System.out.println();
+		System.out.print("Introduzca el path:");
+		path = LeerDatos.leerString();
+		System.out.println();
+		return path;
+	}
+	
+	private static void mensajeNoEncontrado () {
+		System.out.println("------------------------------------------------");
+		System.out.println("El fichero o directorio no encontrado");
+		System.out.println("------------------------------------------------");
 	}
 }
