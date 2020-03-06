@@ -51,9 +51,9 @@ public class LeerDatos {
 	}
 	
 	/**
-	 * Metodo estatico que devuelve un objeto del tipo Integer
+	 * Metodo estatico que devuelve un objeto del tipo Long
 	 * @param 
-	 * @return numero Integer 
+	 * @return numero Long 
 	 */
 	public static Long leerLong() {	
 		Long numero = null;
