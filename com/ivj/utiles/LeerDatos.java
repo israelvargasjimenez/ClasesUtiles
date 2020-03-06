@@ -50,6 +50,27 @@ public class LeerDatos {
 		return numero;
 	}
 	
+	/**
+	 * Metodo estatico que devuelve un objeto del tipo Integer
+	 * @param 
+	 * @return numero Integer 
+	 */
+	public static Long leerLong() {	
+		Long numero = null;
+		boolean correcto = false;
+		do {
+			try {
+				numero =  new Scanner(System.in).nextLong();	
+				correcto = true;
+
+			}catch (InputMismatchException e) {
+				System.out.println("********************************************");
+				System.out.println("Error al tratar el número, tecleelo de nuevo.");
+				correcto = false;
+			}
+		}while (correcto == false);	
+		return numero;
+	}
 	
 	/**
 	 * Metodo estatico que devuelve un objeto del tipo String
