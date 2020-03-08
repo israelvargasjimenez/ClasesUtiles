@@ -92,6 +92,36 @@ public class LeerDatos {
 		return frase;
 	}
 	
+	/**
+	 * Metodo que convierte a un único String un array que contiene diferentes String
+	 * @param palabras String []
+	 * @return fraseFinal String
+	 */
+	public static String concatenaStringContenidosEnArray(String[] palabras) {
+		// Variable que almacena el String terminado a devolver
+		String fraseFinal = null;
+		// Almacena el String en construccion
+		String fraseAux;
+
+		// Se escribe en fraseAux la primera palabra seguida de un espacio
+		fraseAux = palabras[0];
+		fraseAux = fraseAux.concat(" ");
+
+		// Se van concatenando las siguientes palabras con las palabras ya guardadas
+		// en fraseAux, poniendo después un espacio si la palabra a concatenar no es
+		// la última. Si la palabra fuera la última solo se concatenaría dicha palabra
+		for (int i = 1; i < palabras.length; i++) {
+			if (i < palabras.length - 1) {
+				fraseAux = fraseAux.concat(palabras[i]);
+				fraseAux = fraseAux.concat(" ");
+			} else {
+				fraseAux = fraseAux.concat(palabras[i]);
+			}
+			fraseFinal = fraseAux;
+		}
+		return fraseFinal;
+	}
+	
 	
 	/**
 	 * Metodo estatico que devuelve un objeto del tipo Float
