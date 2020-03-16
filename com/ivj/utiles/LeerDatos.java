@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+
+
 /**
  * 
  */
@@ -91,6 +93,76 @@ public class LeerDatos {
 			}while ( correcta == false);
 		return frase;
 	}
+	
+	/**
+	 * Metodo estatico que devuelve el String con las iniciales de cada palabra
+	 * de la frase en mayuscula	 	 * 
+	 * @param
+	 * @return frase con iniciales en mayuscula String
+	 */
+	public static String leerStringInicialesMayusculas() {
+		boolean correcta = false;
+		// Variable que almacena la frase inicial tecleada por el usuario
+		String frase = "";
+		// Variable que almacena la frase inicial del usuario, dividida por palabras y
+		// sin espacios
+		String[] palabrasString;
+		// Variable que almacena la palabra String que toque (según i) dividida por
+		// caracteres
+		char[] palabraArray;
+		// Variables que almacena cada palabra en formato String con la incial en
+		// mayuscula
+		String[] palabrasTratadas;
+		// Variable String que almacena la frase completamente tratada, ya lista para
+		// ser devuelta.
+		String fraseFinal = "";
+
+		do {
+			try {
+				//Variable que indica si se ha detectado un número como parte del
+				// nombre del contacto
+				boolean numeroDetectado = false;
+				//Variable que indica que no se ha introducido el nombre del contacto
+				boolean enBlanco = false;
+				do {
+					//Se imprime el menú de introducir usuario si se ha creado un error
+					//al meter el usuario en el intento anterior
+					if ( numeroDetectado || enBlanco) {
+						System.out.print("Teclee una frase: ");
+						numeroDetectado = false;
+						enBlanco = false;
+					}
+					frase = new Scanner(System.in).nextLine().toLowerCase();
+					correcta = true;
+					palabrasString = frase.split(" ");
+					palabrasTratadas = new String[palabrasString.length];
+					numeroDetectado = isNumber(frase);
+					if (frase.length() <= 0) {
+						enBlanco= true;
+					}
+					enBlanco = frase.length() <= 0;
+				} while (enBlanco || isNumber(frase));
+
+				for (int i = 0; i < palabrasString.length; i++) {
+					// Se divide la palabra String de turno ( segun i) en un char []
+					palabraArray = palabrasString[i].toCharArray();
+					// Se coge la primera letra de la palabraArray y se convierte a mayuscula
+					Character mayuscula = Character.toUpperCase(palabraArray[0]);
+					// Se guarda en palabraArray la primera letra en mayuscula.
+					palabraArray[0] = mayuscula;
+					// Se guarda la palabra ya con la incial en mayuscula en formato String
+					// en ek String [] palabras tratadas
+					palabrasTratadas[i] = new String(palabraArray);
+				}
+				fraseFinal = concatenaStringContenidosEnArray(palabrasTratadas);
+			} catch (NoSuchElementException e) {
+				System.out.println("Error en el formato de la frase tecleada");
+			}
+		} while (correcta == false);
+		return fraseFinal;
+	}
+
+	
 	
 	/**
 	 * Metodo que convierte a un único String un array que contiene diferentes String
@@ -181,5 +253,25 @@ public class LeerDatos {
 						}
 						}while ( correcto == false);
 					return caracter;
+				}
+				
+				/**
+				 * Metodo que comprueba si la frase del tipo String pasada como argumento
+				 * contiene números
+				 * 
+				 * @param digitos String
+				 * @return false si la frase no contiene números.
+				 */
+				public static boolean isNumber(String digitos) {
+					// se separa la frase en digitos individuales
+					char[] digitosseparados = digitos.toCharArray();
+
+					//Se comprueba uno por uno los caracteres por si son números
+					for (int i = 0; i < digitosseparados.length; i++) {
+						if (Character.isDigit(digitosseparados[i])) {
+							return true;
+						}
+					}
+					return false;
 				}
 }
