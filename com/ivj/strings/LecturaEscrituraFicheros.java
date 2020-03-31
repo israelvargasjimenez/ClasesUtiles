@@ -91,26 +91,20 @@ public class LecturaEscrituraFicheros {
 	/**
 	 * Metodo que leer el fichero pasado como argumento
 	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
-	 * @param string File
+	 * @param pathArchivoALeer File
 	 */
-	public static void leerFichero(String string, boolean debbug) {
+	public static void leerFichero(String pathArchivoALeer, boolean debbug) {
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(string));
+			BufferedReader br = new BufferedReader(new FileReader(pathArchivoALeer));
 			String lineaLeida;
 			while ((lineaLeida = br.readLine()) != null) {
 				System.out.println(lineaLeida);
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
-			if (debbug) {
-				mensajeNoEncontrado ();
-			}
+			System.out.println("Fichero no encontrado");
 		} catch (IOException e) {
-			if (debbug) {
-			System.out.println("---------------------------------------");
-			System.out.println("Error tratando de leer el fichero");
-			System.out.println("---------------------------------------");
-			}
+			System.out.println("Error al tratar de leer el fichero");
 		}
 	}
 
