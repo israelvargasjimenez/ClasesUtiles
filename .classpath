@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
-	<classpathentry kind="lib" path="C:/Users/SSDIsrael/git/ClasesUtiles/com/ivj/utiles/joda-time-2.10.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/SSDIsrael/git/ClasesUtiles/com/ivj/utiles/joda-time-2.10.5.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
