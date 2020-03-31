@@ -11,31 +11,36 @@ import com.ivj.utiles.LeerDatos;;
 
 
 public class LecturaEscrituraFicheros {
+	//Almacena el path pasado como argumento al constructor para las operaciones finales de salida
+	String pathSalida;
+	
+	//Almacena el fichero con la información a tratar
+	File fichero;
 	
 
-	public LecturaEscrituraFicheros() {
-		
+	public LecturaEscrituraFicheros(String pathSalida, File fichero) {
+		this.pathSalida = pathSalida;
+		this.fichero = fichero;
 	}
 
+
 	/**
-	 * Metodo que intenta crear un fichero.
-	 * Devuelve 1 si se ha creado correctamente.
-	 * Devuelve 0 si no se ha podido crear.
-	 * Devuelve -1 si se ha producido una excepción del tipo IOException.
-	 * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
-	 * @return Devuelve 1 si se ha creado correctamente.Devuelve 0 si no se ha creado correctamente. 
-	 * devuelve -1 si se ha producido una excepción del tipo IOException.
+	 * Metodo que crea un fichero utilizando el path tecleado por el usuario
 	 */
-	public static void crearFichero() {
-		String path = devuelvePath();
+	public  void crearFichero()  {		
+		File ficheroAux = new File(pathSalida);
+		
 		try {
-			File ficheroAux = new File(path);
-			
-		} catch (NullPointerException ex) {
-			System.out.println("El nombre del path es nulo");
+			ficheroAux.createNewFile();				
+		} catch (IOException ex) {
+			System.out.println("Se ha producido un error");
+		}catch (SecurityException ex ) {
+			System.out.println("Se ha producido una excepción de seguridad");
 		}		
 	}
 
+	
+	
 	/**
 	 * Metodo que devuelve 1 si ha creado el directorio correctamente devuelve 0 si
 	 * no se ha creado el directorio devuelve -1 si se ha producido una excepción de
@@ -44,25 +49,19 @@ public class LecturaEscrituraFicheros {
 	 * @return Devuelve 1 si se ha creado correctamente.Devuelve 0 si no se ha creado correctamente. 
 	 * devuelve -1 si se ha producido una excepción del tipo SecurityException.
 	 */
-	public static int crearDirectorio(boolean debbug) {
-		String path = devuelvePath();
-		int creado;	
-
-		File ficheroAux = new File(path);
+	public  void crearDirectorio() {					
+		File ficheroAux = new File(pathSalida);
 		try {
-			if (ficheroAux.mkdir() == true) {
-				creado = 1;
-			} else {
-				return 0;
-			}
+			ficheroAux.mkdir();
+				
 		} catch (SecurityException ex) {
-			return -1;
-		}
-		return creado;
+			System.out.println("Se ha producido un error de seguridad");
+		}		
 	}
 
+	
 	/**
-	 * Metodo que escribe un texto en el fichero que se encuentra en la ruta
+	 * Metodo que escribe en el fichero final, las lienas 
 	 * absoluta tecleada en consola Devuelve 1 si se ha podido escribir la
 	 * información en el fichero Devuelve 0 si no se ha encontrado el fichero
 	 * Devuelve -1 si se ha producido una excepcion del tipo IOException
@@ -70,64 +69,19 @@ public class LecturaEscrituraFicheros {
 	 * @return 1 si se ha podido escribir la información en el fichero	. 
 	 *  -1 si se ha producido una excepcion del tipo IOException
 	 */
-	public static int escribirEnFichero(boolean debbug) {		
-		int creado = 0;
-		String path = devuelvePath();
-
-		File fichero = new File(path);
-
-		try {
-			System.out.print("Teclee la información a escribir:");
-			String linea = new String(LeerDatos.leerString() + System.lineSeparator());
-			if (fichero.exists() == true) {
+	public  void  escribirEnFichero() {			
+		try {						
 				FileWriter writer = new FileWriter(fichero, true);
-				writer.write(linea);
+				writer.write(pathSalida);
 				writer.flush();
 				writer.close();
-				creado = 1;
-			} else {			
-				if (debbug) {
-					mensajeNoEncontrado();
-				}
-				throw new FileNotFoundException();
-			}
 		}catch (IOException e) {			
-			return -1;
-		}
-		return creado;
+			System.out.println("Error, el fichero debe ser un directorio");
+			System.out.println("o no se ha podido crear el fichero");
+			System.out.println("o no se ha podido abrir el fichero");
+		}	
 	}
-
-	/** Metodo que escribe un texto en el fichero que se 
-	 * pasa como argumento
-     * @param fichero File
-     * @param debbug Boolean. Si es true se imprimirán los mensajes de error por consola.
-     * @return 1 si se escribe correctamente en el fichero
-     * @return -1 si no se puede escribir en el fichero
-     */    
-    public static int  escribirEnFichero (File fichero, boolean debbug)   {  	  
-    	int creado = 0;
-        try { 
-          System.out.print("Teclee la información a escribir:");
-           String linea = new String (LeerDatos.leerString()+ System.lineSeparator());      
-           if ( fichero.exists()== true) {
-        	  FileWriter writer = new FileWriter (fichero, true);
-               writer.write (linea);
-               writer.flush();
-               writer.close(); 
-               creado = 1;
-           }
-           else {  
-        	   if (debbug) {
-        		   mensajeNoEncontrado () ;
-        	   throw new FileNotFoundException (null);
-        	   }
-           }
-        }  
-      catch ( IOException e) {            
-            return -1;
-        }
-        return creado;
-    }
+	
 
 	/**
 	 * Metodo que leer el fichero pasado como argumento
