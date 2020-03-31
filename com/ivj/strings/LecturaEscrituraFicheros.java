@@ -3,6 +3,7 @@ package com.ivj.strings;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.io.FileReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,6 +39,7 @@ public class LecturaEscrituraFicheros {
 	public LecturaEscrituraFicheros(String pathFicheroOriginal, String pathParaSalida ) {
 		this.pathArchivoOriginal = pathFicheroOriginal ;	
 		this.pathParaSalida = pathParaSalida;	
+		
 		crearFichero(pathParaSalida);
 	}
 
@@ -90,11 +92,16 @@ public class LecturaEscrituraFicheros {
 	 * @param pathFicheroATratar String
 	 */
 	public void tratarFichero() {
+		Charset set = Charset.defaultCharset();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(pathArchivoOriginal));
 			String lineaLeida;
 			while ((lineaLeida = br.readLine()) != null) {
-				String lineaFormateada = FormarString.delimitarString(lineaLeida, ",");				
+				//String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false, true);		
+				//String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",true, true);	
+				//String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",true, false);	
+				String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false, false);	
+						
 				escribirEnFichero(lineaFormateada);
 			}
 			br.close();
@@ -105,15 +112,8 @@ public class LecturaEscrituraFicheros {
 		}
 	}
 	
+			
 	
-	/**
-	 * Metodo que trata cada linea leida del fichero
-	 * 
-	 */
-	public void  darFormatoALinea(String linea, String delimitador) {
-		FormarString.delimitarString(linea, delimitador);
-	}
-
 	private static void mensajeNoEncontrado() {
 		System.out.println("------------------------------------------------");
 		System.out.println("El fichero o directorio no encontrado");

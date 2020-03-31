@@ -17,13 +17,15 @@ public class main {
 	}
 
 	public static void main(String[] args) {
-
-		System.out.println("Teclee el path del fichero a tratar:");
-		String pathFicheroATratar = LeerDatos.leerString();
+		
+		String completo1 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\columna.txt";
+		String completo2 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\clientes\\";
+		
 		System.out.println("Teclee el path del fichero tratado:");
 		String pathFicheroTratado = LeerDatos.leerString();
+		completo2 = completo2.concat(pathFicheroTratado);
 		
-		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(pathFicheroATratar,pathFicheroTratado );		
+		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(completo1,completo2 );		
 		tra.tratarFichero();
 	}
 	
