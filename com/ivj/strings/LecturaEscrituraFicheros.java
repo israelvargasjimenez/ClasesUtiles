@@ -12,14 +12,19 @@ import com.ivj.utiles.LeerDatos;;
 
 public class LecturaEscrituraFicheros {
 	//Almacena el path pasado como argumento al constructor para las operaciones finales de salida
-	String pathSalida;
+	String path;
 	
 	//Almacena el fichero con la información a tratar
 	File fichero;
 	
 
-	public LecturaEscrituraFicheros(String pathSalida, File fichero) {
-		this.pathSalida = pathSalida;
+	public LecturaEscrituraFicheros(String path, File fichero) {
+		this.path = path;
+		this.fichero = fichero;
+	}
+	
+	public LecturaEscrituraFicheros(String path) {
+		this.path = path;
 		this.fichero = fichero;
 	}
 
@@ -28,7 +33,7 @@ public class LecturaEscrituraFicheros {
 	 * Metodo que crea un fichero utilizando el path tecleado por el usuario
 	 */
 	public  void crearFichero()  {		
-		File ficheroAux = new File(pathSalida);
+		File ficheroAux = new File(path);
 		
 		try {
 			ficheroAux.createNewFile();				
@@ -50,7 +55,7 @@ public class LecturaEscrituraFicheros {
 	 * devuelve -1 si se ha producido una excepción del tipo SecurityException.
 	 */
 	public  void crearDirectorio() {					
-		File ficheroAux = new File(pathSalida);
+		File ficheroAux = new File(path);
 		try {
 			ficheroAux.mkdir();
 				
@@ -72,7 +77,7 @@ public class LecturaEscrituraFicheros {
 	public  void  escribirEnFichero() {			
 		try {						
 				FileWriter writer = new FileWriter(fichero, true);
-				writer.write(pathSalida);
+				writer.write(path);
 				writer.flush();
 				writer.close();
 		}catch (IOException e) {			
