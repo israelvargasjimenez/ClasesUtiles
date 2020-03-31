@@ -11,10 +11,10 @@ import com.ivj.utiles.LeerDatos;;
 
 
 public class LecturaEscrituraFicheros {
-	boolean debbug;
+	
 
-	public LecturaEscrituraFicheros(boolean debbug) {
-		this.debbug = debbug;
+	public LecturaEscrituraFicheros() {
+		
 	}
 
 	/**
@@ -26,21 +26,14 @@ public class LecturaEscrituraFicheros {
 	 * @return Devuelve 1 si se ha creado correctamente.Devuelve 0 si no se ha creado correctamente. 
 	 * devuelve -1 si se ha producido una excepción del tipo IOException.
 	 */
-	public static int crearFichero(boolean debbug) {
+	public static void crearFichero() {
 		String path = devuelvePath();
-		int creado;	
-
-		File ficheroAux = new File(path);
 		try {
-			if (ficheroAux.createNewFile() == true) {
-				creado = 1;
-			} else {
-				return 0;
-			}
-		} catch (IOException ex) {
-			return -1;
-		}
-		return creado;
+			File ficheroAux = new File(path);
+			
+		} catch (NullPointerException ex) {
+			System.out.println("El nombre del path es nulo");
+		}		
 	}
 
 	/**
