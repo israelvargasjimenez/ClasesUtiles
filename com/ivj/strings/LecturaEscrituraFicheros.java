@@ -103,13 +103,20 @@ public class LecturaEscrituraFicheros {
 					contador++;
 					continue;
 				} else {
-					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false,
-					// true);
-					String lineaFormateada = FormarString.delimitarString(lineaLeida, ",", true, true);
-					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",true,
-					// false);
-					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false,
-					// false);
+					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false, true);
+					String lineaFormateada = FormarString.delimitarString(lineaLeida, true, true);
+					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",true, false);
+					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false, false);
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					//Se escribe la linea formada completamente en el fichero de salida indicado con el path "pathParaSalida"
 					escribirEnFichero(lineaFormateada);
 				}
 			}

@@ -13,9 +13,6 @@ public class FormarString {
 	 */	
 	public static void delimitaFrases (String [] frases, String delimitador) {
 		for ( int i = 0; i < frases.length; i++) {
-			
-			
-			
 		}
 	}
 	
@@ -28,14 +25,14 @@ public class FormarString {
 	 * @return frase String
 	 *
 	 */
-	public static String  delimitarString ( String frase, String delimitador, boolean empiezaPorComa, boolean terminaPorComa) {
+	public static String  delimitarString ( String frase,  boolean empiezaPorComa, boolean terminaPorComa) {
 		if (empiezaPorComa && terminaPorComa) {
-			return frase= delimitador.concat("'").concat(frase).concat("'").concat(delimitador)+"\n";	
+			return frase= ",".concat("'").concat(frase).concat("'").concat(",")+"\n";	
 		} else if (!empiezaPorComa && terminaPorComa) {
-			return frase= "'".concat(frase).concat("'").concat(delimitador)+"\n";	
+			return frase= "'".concat(frase).concat("'").concat(",")+"\n";	
 		}else if(!(empiezaPorComa && terminaPorComa)){
-			return frase= delimitador.concat(frase).concat(delimitador)+"\n";	
+			return frase= "'".concat(frase).concat("'")+"\n";	
 		}
-		return frase= delimitador.concat("'").concat(frase).concat("'")+"\n";		
+		return frase= ",".concat("'").concat(frase).concat("'")+"\n";		
 	}
 }
