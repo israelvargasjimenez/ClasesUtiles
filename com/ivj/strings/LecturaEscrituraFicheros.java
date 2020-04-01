@@ -74,12 +74,9 @@ public class LecturaEscrituraFicheros {
 	 *         producido una excepcion del tipo IOException
 	 */
 	public void escribirEnFichero(String lineaFormada) {
-		Charset charSet = Charset.defaultCharset();
-		String nombreCanonico = charSet.name();
-		System.out.println(nombreCanonico);
-
+		
 		try {
-			FileWriter writer = new FileWriter(fichero, Charset.forName("UTF8"), true);
+			FileWriter writer = new FileWriter(fichero, true);
 			writer.write(lineaFormada);
 			writer.flush();
 			writer.close();
@@ -100,9 +97,8 @@ public class LecturaEscrituraFicheros {
 			BufferedReader br = new BufferedReader(
 					new InputStreamReader(new FileInputStream(pathArchivoOriginal), "UTF-8"));
 			String lineaLeida;
-			while ((lineaLeida = br.readLine()) != null) {
-				System.out.println(lineaLeida);
-				int contador = 0;
+			int contador = 0;
+			while ((lineaLeida = br.readLine()) != null) {	
 				if (contador == 0) {
 					contador++;
 					continue;

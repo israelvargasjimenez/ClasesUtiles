@@ -22,11 +22,11 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		System.out.print("Teclee el path del archivo a leer:");
-		String completo1 = LeerDatos.leerStringUTF8();
+		//System.out.print("Teclee el path del archivo a leer:");
+		String completo1 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\ficheroAux.txt"; //    LeerDatos.leerStringUTF8();
 		
-		System.out.print("Teclee el path del archivo de salida:");
-		String completo2 = LeerDatos.leerStringUTF8();		
+		//System.out.print("Teclee el path del archivo de salida:");
+		String completo2 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\clientes\\CLIENTES.txt"; // LeerDatos.leerStringUTF8();		
 		String pathFicheroTratado = LeerDatos.leerString();
 		completo2 = completo2.concat(pathFicheroTratado);
 		
