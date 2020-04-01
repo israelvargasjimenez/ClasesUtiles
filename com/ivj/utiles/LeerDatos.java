@@ -352,6 +352,27 @@ public class LeerDatos {
 				}
 				
 				/**
+				 * Metodo estatico que devuelve un objeto del tipo Character
+				 * @param 
+				 * @return numero Character compatible con utf-8
+				 */
+				public static Character leerCharacterUTF8() {
+					boolean correcto = true;
+					Character caracter = ' ';		
+					do {
+						try {
+							caracter = leerStringUTF8().charAt(0);
+							correcto = true;
+						}catch (IndexOutOfBoundsException e) {
+							System.out.println("El caracter tecleado no es válido, intentelo de nuevo.");
+							correcto = false;
+						}
+						}while ( correcto == false);
+					return caracter;
+				}
+				
+				
+				/**
 				 * Metodo que comprueba si la frase del tipo String pasada como argumento
 				 * contiene números
 				 * 
