@@ -52,6 +52,9 @@ public class LeerDatos {
 		return numero;
 	}
 	
+	
+	
+	
 	/**
 	 * Metodo estatico que devuelve un objeto del tipo Long
 	 * @param 
@@ -93,6 +96,29 @@ public class LeerDatos {
 			}while ( correcta == false);
 		return frase;
 	}
+	
+	
+	/**
+	 * Metodo estatico que devuelve un objeto del tipo String utilizando el utf-8 que admite ñ y acentos
+	 * @param 
+	 * @return frase String en formato utf-8
+	 */
+	public static String leerStringUTF8() {
+		boolean correcta = false;
+		String frase ="";		
+		do {
+			try {
+				frase = new Scanner(System.in,"UTF-8").nextLine();
+				correcta = true;
+				
+			}catch (NoSuchElementException e) {
+				System.out.println("Se ha producido un error al teclear la frase, intentelo de nuevo.");
+			}
+			}while ( correcta == false);
+		return frase;
+	}
+	
+	
 	
 	/**
 	 * Metodo estatico que devuelve el String con las iniciales de cada palabra
