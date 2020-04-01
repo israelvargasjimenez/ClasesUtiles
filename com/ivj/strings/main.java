@@ -25,11 +25,11 @@ public class main {
 		System.out.print("Teclee el nombre que tendrá la tabla:");
 		String nombreTabla = LeerDatos.leerStringUTF8();
 		
-		System.out.print("Teclee el path del archivo a leer:");
-		String completo1 = LeerDatos.leerStringUTF8();
+		//System.out.print("Teclee el path del archivo a leer:");
+		String completo1 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\ficheroAux.txt"; //     LeerDatos.leerStringUTF8();
 		
-		System.out.print("Teclee el path del archivo de salida:");
-		String completo2 = LeerDatos.leerStringUTF8();			
+		//System.out.print("Teclee el path del archivo de salida:");
+		String completo2 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\TABLAS\\"  +nombreTabla+".txt";   //LeerDatos.leerStringUTF8();			
 		
 		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(completo1,completo2 );		
 		tra.tratarFichero();

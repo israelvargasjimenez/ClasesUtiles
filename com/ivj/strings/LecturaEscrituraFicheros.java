@@ -102,22 +102,33 @@ public class LecturaEscrituraFicheros {
 				if (contador == 0) {
 					contador++;
 					continue;
-				} else {
-					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false, true);
-					String lineaFormateada = FormarString.delimitarString(lineaLeida, true, true);
-					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",true, false);
-					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false, false);
+				} else {		
+					//Se separa cada linea por palabras
+					String [] lineaSeparadaPorPalabras = lineaLeida.split(".");
 					
+					for ( int i = 0; i <lineaSeparadaPorPalabras.length; i++) {
+						if ( i ==0) {
+							FormarString.delimitarString(lineaSeparadaPorPalabras[i],false, true);
+						} else if ( (i > 0) && (i< lineaSeparadaPorPalabras.length)) {
+							FormarString.delimitarString(lineaSeparadaPorPalabras[i], true, true);
+						}else {
+							FormarString.delimitarString(lineaSeparadaPorPalabras[i],true, false);
+						}
+						
+						
+						
+						
+						// insertar las palabras " INSERT INTO nombre de la tabla values (" + lineaFormateada+
+						// insertar las palabras ")"					
+						
+						
+						
+						
+						
+						//Se escribe la linea formada completamente en el fichero de salida indicado con el path "pathParaSalida"
+						escribirEnFichero(lineaSeparadaPorPalabras[i]);	
+					}
 					
-					
-					
-					
-					
-					
-					
-					
-					//Se escribe la linea formada completamente en el fichero de salida indicado con el path "pathParaSalida"
-					escribirEnFichero(lineaFormateada);
 				}
 			}
 			br.close();
