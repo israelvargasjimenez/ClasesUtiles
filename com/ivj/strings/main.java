@@ -1,6 +1,10 @@
 package com.ivj.strings;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+
 import com.ivj.utiles.LeerDatos;
 
 public class main {
@@ -25,6 +29,8 @@ public class main {
 		String completo2 = LeerDatos.leerStringUTF8();		
 		String pathFicheroTratado = LeerDatos.leerString();
 		completo2 = completo2.concat(pathFicheroTratado);
+		
+		
 		
 		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(completo1,completo2 );		
 		tra.tratarFichero();

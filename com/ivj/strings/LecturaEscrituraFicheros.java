@@ -1,8 +1,5 @@
 package com.ivj.strings;
 
-
-
-
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,22 +16,23 @@ public class LecturaEscrituraFicheros {
 	// Almacena el path pasado como argumento al constructor para las operaciones
 	// finales de salida
 	String pathArchivoOriginal;
-	
-	//Almacena el path del archivo con las frases tratadas
+
+	// Almacena el path del archivo con las frases tratadas
 	String pathParaSalida;
 
 	// Almacena el fichero con las frases tratadas listas
 	File fichero;
-	
-	
-	public LecturaEscrituraFicheros(String pathFicheroOriginal, String pathParaSalida ) {
-		this.pathArchivoOriginal = pathFicheroOriginal ;	
-		this.pathParaSalida = pathParaSalida;	
-		
+
+	// Almacena el Charset por defecto
+	Charset charSet = Charset.defaultCharset();
+
+	public LecturaEscrituraFicheros(String pathFicheroOriginal, String pathParaSalida) {
+		this.pathArchivoOriginal = pathFicheroOriginal;
+		this.pathParaSalida = pathParaSalida;
+
 		crearFichero(pathParaSalida);
 	}
 
-	
 	/**
 	 * @return the path
 	 */
@@ -48,22 +46,21 @@ public class LecturaEscrituraFicheros {
 	public File getFichero() {
 		return fichero;
 	}
-	
+
 	/**
 	 * Metodo que crea un fichero utilizando el path tecleado por el usuario
 	 */
-	private void crearFichero(String pathParaSalida) {		
-		fichero = new File(pathParaSalida);		
+	private void crearFichero(String pathParaSalida) {
+		fichero = new File(pathParaSalida);
 		try {
 			fichero.createNewFile();
-			
+
 		} catch (IOException ex) {
 			System.out.println("Se ha producido un error");
 		} catch (SecurityException ex) {
 			System.out.println("Se ha producido una excepción de seguridad");
 		}
 	}
-
 
 	/**
 	 * Metodo que escribe en el fichero final, las lienas absoluta tecleada en
@@ -77,8 +74,12 @@ public class LecturaEscrituraFicheros {
 	 *         producido una excepcion del tipo IOException
 	 */
 	public void escribirEnFichero(String lineaFormada) {
+		Charset charSet = Charset.defaultCharset();
+		String nombreCanonico = charSet.name();
+		System.out.println(nombreCanonico);
+
 		try {
-			FileWriter writer = new FileWriter(fichero,  true);
+			FileWriter writer = new FileWriter(fichero, Charset.forName("UTF8"), true);
 			writer.write(lineaFormada);
 			writer.flush();
 			writer.close();
@@ -90,23 +91,31 @@ public class LecturaEscrituraFicheros {
 	}
 
 	/**
-	 * Metodo que se encarga de leer cada linea del fichero y 
-	 * llama a los metodos 
-	 *  
+	 * Metodo que se encarga de leer cada linea del fichero y llama a los metodos
+	 * 
 	 * @param pathFicheroATratar String
 	 */
 	public void tratarFichero() {
-		Charset set = Charset.defaultCharset();
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream (pathArchivoOriginal),"UTF-8"));
+			BufferedReader br = new BufferedReader(
+					new InputStreamReader(new FileInputStream(pathArchivoOriginal), "UTF-8"));
 			String lineaLeida;
 			while ((lineaLeida = br.readLine()) != null) {
-				//String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false, true);		
-				//String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",true, true);	
-				//String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",true, false);	
-				String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false, false);	
-						
-				escribirEnFichero(lineaFormateada);
+				System.out.println(lineaLeida);
+				int contador = 0;
+				if (contador == 0) {
+					contador++;
+					continue;
+				} else {
+					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false,
+					// true);
+					String lineaFormateada = FormarString.delimitarString(lineaLeida, ",", true, true);
+					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",true,
+					// false);
+					// String lineaFormateada = FormarString.delimitarString(lineaLeida, ",",false,
+					// false);
+					escribirEnFichero(lineaFormateada);
+				}
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -115,9 +124,7 @@ public class LecturaEscrituraFicheros {
 			System.out.println("Error al tratar de leer el fichero");
 		}
 	}
-	
-			
-	
+
 	private static void mensajeNoEncontrado() {
 		System.out.println("------------------------------------------------");
 		System.out.println("El fichero o directorio no encontrado");
