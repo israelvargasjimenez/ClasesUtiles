@@ -1,7 +1,7 @@
 package com.ivj.strings;
 
 
-// Israel
+
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -26,7 +26,15 @@ public class LecturaEscrituraFicheros {
 	// Almacena el fichero con las frases tratadas listas
 	File fichero;
 	
+	
+	public LecturaEscrituraFicheros(String pathFicheroOriginal, String pathParaSalida ) {
+		this.pathArchivoOriginal = pathFicheroOriginal ;	
+		this.pathParaSalida = pathParaSalida;	
+		
+		crearFichero(pathParaSalida);
+	}
 
+	
 	/**
 	 * @return the path
 	 */
@@ -40,20 +48,12 @@ public class LecturaEscrituraFicheros {
 	public File getFichero() {
 		return fichero;
 	}
-
-	public LecturaEscrituraFicheros(String pathFicheroOriginal, String pathParaSalida ) {
-		this.pathArchivoOriginal = pathFicheroOriginal ;	
-		this.pathParaSalida = pathParaSalida;	
-		
-		crearFichero(pathParaSalida);
-	}
-
+	
 	/**
 	 * Metodo que crea un fichero utilizando el path tecleado por el usuario
 	 */
-	private void crearFichero(String pathParaSalida) {
-		
-		fichero = new File(pathParaSalida);
+	private void crearFichero(String pathParaSalida) {		
+		fichero = new File(pathParaSalida);		
 		try {
 			fichero.createNewFile();
 			
@@ -63,7 +63,6 @@ public class LecturaEscrituraFicheros {
 			System.out.println("Se ha producido una excepción de seguridad");
 		}
 	}
-
 
 
 	/**
@@ -79,7 +78,7 @@ public class LecturaEscrituraFicheros {
 	 */
 	public void escribirEnFichero(String lineaFormada) {
 		try {
-			FileWriter writer = new FileWriter(fichero, true);
+			FileWriter writer = new FileWriter(fichero,  true);
 			writer.write(lineaFormada);
 			writer.flush();
 			writer.close();

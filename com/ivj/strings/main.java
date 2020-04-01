@@ -18,10 +18,11 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		String completo1 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\columna.txt";
-		String completo2 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\clientes\\";
+		System.out.print("Teclee el path del archivo a leer:");
+		String completo1 = LeerDatos.leerStringUTF8();
 		
-		System.out.println("Teclee el path del fichero tratado:");
+		System.out.print("Teclee el path del archivo de salida:");
+		String completo2 = LeerDatos.leerStringUTF8();		
 		String pathFicheroTratado = LeerDatos.leerString();
 		completo2 = completo2.concat(pathFicheroTratado);
 		
