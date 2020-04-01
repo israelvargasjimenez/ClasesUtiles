@@ -8,7 +8,7 @@ import java.util.Set;
 import com.ivj.utiles.LeerDatos;
 
 public class main {
-	// Almacena todas las líneas con las instrucciones insert
+	/// Almacena todas las líneas con las instrucciones insert
 	static ArrayList<String> todasLineasCompletas = new ArrayList<String>();
 
 	// Variable que almacena la linea de turno ya formada completamente
