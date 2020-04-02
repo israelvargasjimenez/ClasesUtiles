@@ -74,7 +74,7 @@ public class LecturaEscrituraFicheros {
 	 *         producido una excepcion del tipo IOException
 	 */
 	public void escribirEnFichero(String lineaFormada) {
-		
+
 		try {
 			FileWriter writer = new FileWriter(fichero, true);
 			writer.write(lineaFormada);
@@ -92,46 +92,29 @@ public class LecturaEscrituraFicheros {
 	 * 
 	 * @param pathFicheroATratar String
 	 */
-	public void tratarFichero() {
+	public void tratarFichero(boolean primeraColumna, boolean ultimaColumna) {
 		String lineaFinal = "";
-		
+
 		try {
 			BufferedReader br = new BufferedReader(
 					new InputStreamReader(new FileInputStream(pathArchivoOriginal), "UTF-8"));
 			String lineaLeida;
-			
+
 			int contador = 0;
-			while ((lineaLeida = br.readLine()) != null) {	
+			while ((lineaLeida = br.readLine()) != null) {
 				if (contador == 0) {
 					contador++;
 					continue;
-				} else {						
-									
-					//Se separa cada linea por palabras
-					String [] lineaSeparadaPorPalabras = new String[lineaLeida.length()];							
-					
-					
-					
-										
-					for ( int i = 0; i <lineaSeparadaPorPalabras.length; i++) {
-						if ( contador ==0) {
-							FormarString.delimitarString(lineaSeparadaPorPalabras[i],false, true);
-							contador++;
-						} else if ( (i > 0) && (i< lineaSeparadaPorPalabras.length)) {
-							FormarString.delimitarString(lineaSeparadaPorPalabras[i], true, true);
-							contador++;
-						}else {
-							FormarString.delimitarString(lineaSeparadaPorPalabras[i],true, false);
-							contador = 0;
-						}	
-						
-						for ( int j = 0; j < lineaSeparadaPorPalabras.length; j++) {
-							lineaSeparadaPorPalabras[j].strip();
-						}
-						
+				} else {
+					lineaLeida= "".concat(lineaLeida.strip());
+					if (!(primeraColumna) && ultimaColumna) {
+						FormarString.delimitarString(lineaLeida, false, true);
+					} else if (!(primeraColumna && ultimaColumna)) {
+						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, false, false));
+					} else {
+						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, true, true));
 					}
-					
-					
+					escribirEnFichero(lineaLeida);
 				}
 			}
 			br.close();

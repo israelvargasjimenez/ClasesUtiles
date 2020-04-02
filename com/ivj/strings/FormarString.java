@@ -28,7 +28,7 @@ public class FormarString {
 	public static String  delimitarString ( String frase,  boolean empiezaPorComa, boolean terminaPorComa) {
 		if (empiezaPorComa && terminaPorComa) {
 			return frase= ",".concat("'").concat(frase).concat("'").concat(",")+"\n";	
-		} else if (!empiezaPorComa && terminaPorComa) {
+		} else if (!(empiezaPorComa) && terminaPorComa) {
 			return frase= "'".concat(frase).concat("'").concat(",")+"\n";	
 		}else if(!(empiezaPorComa && terminaPorComa)){
 			return frase= "'".concat(frase).concat("'")+"\n";	

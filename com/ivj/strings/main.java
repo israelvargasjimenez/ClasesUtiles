@@ -22,6 +22,9 @@ public class main {
 
 	public static void main(String[] args) {
 		
+		boolean inicial = false;
+		boolean ultima = false;
+		
 		System.out.print("Teclee el nombre que tendrá la tabla:");
 		String nombreTabla = LeerDatos.leerStringUTF8();
 		
@@ -31,8 +34,24 @@ public class main {
 		//System.out.print("Teclee el path del archivo de salida:");
 		String completo2 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\TABLAS\\"  +nombreTabla+".txt";   //LeerDatos.leerStringUTF8();			
 		
+		//Se pregunta el tipo de columna
+		System.out.println("Elija el tipo de columna?");
+		System.out.println("\t1- Primera");
+		System.out.println("\t2- Ultima");
+		System.out.println("\t3- Intermedia");	
+		int aux = LeerDatos.leerInteger();		
+		if (aux== 1) {
+			inicial = true;			
+		} else if (aux == 2) {
+			ultima = true;
+		}else {
+			inicial = false;
+			ultima = false;
+		}
+					
+		
 		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(completo1,completo2 );		
-		tra.tratarFichero();
+		tra.tratarFichero(inicial, ultima);
 	}
 	
 	
