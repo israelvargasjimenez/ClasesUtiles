@@ -108,9 +108,9 @@ public class LecturaEscrituraFicheros {
 				} else {
 					lineaLeida= "".concat(lineaLeida.strip());
 					if (!(primeraColumna) && ultimaColumna) {
-						FormarString.delimitarString(lineaLeida, false, true);
-					} else if (!(primeraColumna && ultimaColumna)) {
-						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, false, false));
+						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, false, true));
+					} else if (primeraColumna && !(ultimaColumna)) {
+						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, true, false));
 					} else {
 						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, true, true));
 					}

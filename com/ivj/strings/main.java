@@ -37,13 +37,13 @@ public class main {
 		//Se pregunta el tipo de columna
 		System.out.println("Elija el tipo de columna?");
 		System.out.println("\t1- Primera");
-		System.out.println("\t2- Ultima");
-		System.out.println("\t3- Intermedia");	
+		System.out.println("\t2- Intermedia");
+		System.out.println("\t3- Ultima");	
 		int aux = LeerDatos.leerInteger();		
 		if (aux== 1) {
-			inicial = true;			
-		} else if (aux == 2) {
-			ultima = true;
+			ultima = true;			
+		} else if (aux == 3) {
+			inicial = true;
 		}else {
 			inicial = false;
 			ultima = false;
