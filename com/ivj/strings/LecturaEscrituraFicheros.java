@@ -92,7 +92,7 @@ public class LecturaEscrituraFicheros {
 	 * 
 	 * @param pathFicheroATratar String
 	 */
-	public void tratarFichero(boolean primeraColumna, boolean ultimaColumna) {
+	public void tratarFichero(boolean columnaFinal) {
 		String lineaFinal = "";
 
 		try {
@@ -106,14 +106,11 @@ public class LecturaEscrituraFicheros {
 					contador++;
 					continue;
 				} else {
-					lineaLeida= "".concat(lineaLeida.strip());
-					if (!(primeraColumna) && ultimaColumna) {
-						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, false, true));
-					} else if (primeraColumna && !(ultimaColumna)) {
-						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, true, false));
-					} else {
-						lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, true, true));
-					}
+					// Se quitan los espacios por delante y por detrás del String
+					lineaLeida = "".concat(lineaLeida.strip());
+					// Se envía la frase para darla formato
+					lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, columnaFinal));
+					// Se escribe en el fichero la frase
 					escribirEnFichero(lineaLeida);
 				}
 			}

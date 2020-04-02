@@ -25,14 +25,10 @@ public class FormarString {
 	 * @return frase String
 	 *
 	 */
-	public static String  delimitarString ( String frase,  boolean empiezaPorComa, boolean terminaPorComa) {
-		if (empiezaPorComa && !(terminaPorComa)) {
-			return frase= ",".concat("'").concat(frase).concat("'")+"\n";	
-		} else if (!(empiezaPorComa) && terminaPorComa) {
-			return frase= "'".concat(frase).concat("'").concat(",")+"\n";	
-		}else if(empiezaPorComa && terminaPorComa){
+	public static String  delimitarString ( String frase, boolean columnaFinal) {
+		if ( columnaFinal) {
 			return frase= "'".concat(frase).concat("'")+"\n";	
 		}
-		return frase= ",".concat("'").concat(frase).concat("'")+"\n";		
+		return frase= "'".concat(frase).concat("'").concat(",")+"\n";			
 	}
 }

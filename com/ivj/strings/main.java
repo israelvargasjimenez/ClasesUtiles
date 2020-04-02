@@ -22,36 +22,27 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		boolean inicial = false;
-		boolean ultima = false;
+		boolean columnaFinal = false;			
+		int opcion = 2;
 		
-		System.out.print("Teclee el nombre que tendrá la tabla:");
+		System.out.print("Teclee el nombre que tendrá la columna:");
 		String nombreTabla = LeerDatos.leerStringUTF8();
 		
+		System.out.println("Elija si se trata de columna final:");
+		System.out.println("1- Si");
+		System.out.println("2- No");
+		if (LeerDatos.leerInteger() == 1) {
+			columnaFinal = true;
+		}
+				
 		//System.out.print("Teclee el path del archivo a leer:");
 		String completo1 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\ficheroAux.txt"; //     LeerDatos.leerStringUTF8();
 		
 		//System.out.print("Teclee el path del archivo de salida:");
 		String completo2 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\TABLAS\\"  +nombreTabla+".txt";   //LeerDatos.leerStringUTF8();			
 		
-		//Se pregunta el tipo de columna
-		System.out.println("Elija el tipo de columna?");
-		System.out.println("\t1- Primera");
-		System.out.println("\t2- Intermedia");
-		System.out.println("\t3- Ultima");	
-		int aux = LeerDatos.leerInteger();		
-		if (aux== 1) {
-			ultima = true;			
-		} else if (aux == 3) {
-			inicial = true;
-		}else {
-			inicial = false;
-			ultima = false;
-		}
-					
-		
 		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(completo1,completo2 );		
-		tra.tratarFichero(inicial, ultima);
+		tra.tratarFichero(columnaFinal);
 	}
 	
 	
