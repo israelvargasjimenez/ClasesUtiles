@@ -93,41 +93,44 @@ public class LecturaEscrituraFicheros {
 	 * @param pathFicheroATratar String
 	 */
 	public void tratarFichero() {
+		String lineaFinal = "";
+		
 		try {
 			BufferedReader br = new BufferedReader(
 					new InputStreamReader(new FileInputStream(pathArchivoOriginal), "UTF-8"));
 			String lineaLeida;
+			
 			int contador = 0;
 			while ((lineaLeida = br.readLine()) != null) {	
 				if (contador == 0) {
 					contador++;
 					continue;
-				} else {		
+				} else {						
+									
 					//Se separa cada linea por palabras
-					String [] lineaSeparadaPorPalabras = lineaLeida.split(".");
+					String [] lineaSeparadaPorPalabras = new String[lineaLeida.length()];							
 					
+					
+					
+										
 					for ( int i = 0; i <lineaSeparadaPorPalabras.length; i++) {
-						if ( i ==0) {
+						if ( contador ==0) {
 							FormarString.delimitarString(lineaSeparadaPorPalabras[i],false, true);
+							contador++;
 						} else if ( (i > 0) && (i< lineaSeparadaPorPalabras.length)) {
 							FormarString.delimitarString(lineaSeparadaPorPalabras[i], true, true);
+							contador++;
 						}else {
 							FormarString.delimitarString(lineaSeparadaPorPalabras[i],true, false);
+							contador = 0;
+						}	
+						
+						for ( int j = 0; j < lineaSeparadaPorPalabras.length; j++) {
+							lineaSeparadaPorPalabras[j].strip();
 						}
 						
-						
-						
-						
-						// insertar las palabras " INSERT INTO nombre de la tabla values (" + lineaFormateada+
-						// insertar las palabras ")"					
-						
-						
-						
-						
-						
-						//Se escribe la linea formada completamente en el fichero de salida indicado con el path "pathParaSalida"
-						escribirEnFichero(lineaSeparadaPorPalabras[i]);	
 					}
+					
 					
 				}
 			}
