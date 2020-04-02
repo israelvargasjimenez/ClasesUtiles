@@ -1,9 +1,19 @@
 package com.ivj.strings;
 
+import java.io.BufferedReader;
+
 public class ConcatenadorColumnas {
+	
+	BufferedReader br;
+	
 
 	public ConcatenadorColumnas() {
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	
+	
+	
+	
 
 }

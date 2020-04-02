@@ -1,5 +1,6 @@
 package com.ivj.strings;
 
+import java.io.File;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,12 +29,7 @@ public class main {
 		System.out.print("Teclee el nombre que tendrá la columna:");
 		String nombreTabla = LeerDatos.leerStringUTF8();
 		
-		System.out.println("Elija si se trata de columna final:");
-		System.out.println("1- Si");
-		System.out.println("2- No");
-		if (LeerDatos.leerInteger() == 1) {
-			columnaFinal = true;
-		}
+		
 				
 		//System.out.print("Teclee el path del archivo a leer:");
 		String completo1 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\ficheroAux.txt"; //     LeerDatos.leerStringUTF8();
@@ -43,6 +39,12 @@ public class main {
 		
 		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(completo1,completo2 );		
 		tra.tratarFichero(columnaFinal);
+		
+		///////////////////////////////////////////////////////concatenar tablas/////////////////////////////////////////////////////////////
+		String [] todosPath = new File("C:\\Users\\SSDIsrael\\Desktop\\ficheros\\TABLAS").list();
+		
+		
+		
 	}
 	
 	

@@ -26,9 +26,10 @@ public class FormarString {
 	 *
 	 */
 	public static String  delimitarString ( String frase, boolean columnaFinal) {
+		frase = "".concat(frase.strip());
 		if ( columnaFinal) {
 			return frase= "'".concat(frase).concat("'")+"\n";	
 		}
-		return frase= "'".concat(frase).concat("'").concat(",")+"\n";			
+		return frase= "'".concat(frase).concat("'").concat(",");			
 	}
 }

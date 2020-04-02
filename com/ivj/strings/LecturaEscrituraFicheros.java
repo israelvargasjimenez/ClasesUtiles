@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.io.FileReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -106,12 +107,25 @@ public class LecturaEscrituraFicheros {
 					contador++;
 					continue;
 				} else {
-					// Se quitan los espacios por delante y por detrás del String
-					lineaLeida = "".concat(lineaLeida.strip());
-					// Se envía la frase para darla formato
-					lineaLeida = "".concat(FormarString.delimitarString(lineaLeida, columnaFinal));
-					// Se escribe en el fichero la frase
-					escribirEnFichero(lineaLeida);
+					//Separar la linea en frases utilizando los marcadores
+					String [] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");
+					//Se quitan los espacios entre frases por delante y por detras
+					for ( int i = 0; i < fraseSeparadaEnFrasesPeques.length-1; i++) {						
+						fraseSeparadaEnFrasesPeques[i] =  "".concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false));
+					}	
+					//Se escribe la última mini frase
+					fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length-1] =  "".concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length-1], true));
+					
+					//Guarda la frase completa
+					String fraseFinal = "";
+					for (int i = 0; i< fraseSeparadaEnFrasesPeques.length; i++) {
+						fraseFinal = fraseFinal.concat(fraseSeparadaEnFrasesPeques[i]);
+					}
+					
+					
+					
+					// escribir la linea completa con una concat de todas las líneas pequeñas
+					escribirEnFichero(fraseFinal);
 				}
 			}
 			br.close();
