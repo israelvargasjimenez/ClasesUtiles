@@ -93,7 +93,7 @@ public class LecturaEscrituraFicheros {
 	 * 
 	 * @param pathFicheroATratar String
 	 */
-	public void tratarFichero(boolean columnaFinal) {
+	public void tratarFichero(String nombreTabla) {
 		String lineaFinal = "";
 
 		try {
@@ -108,10 +108,10 @@ public class LecturaEscrituraFicheros {
 					continue;
 				} else {
 					//Separar la linea en frases utilizando los marcadores
-					String [] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");
+					String [] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");					
 					//Se quitan los espacios entre frases por delante y por detras
 					for ( int i = 0; i < fraseSeparadaEnFrasesPeques.length-1; i++) {						
-						fraseSeparadaEnFrasesPeques[i] =  "".concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false));
+						fraseSeparadaEnFrasesPeques[i] =  "".concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i],false));
 					}	
 					//Se escribe la última mini frase
 					fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length-1] =  "".concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length-1], true));
@@ -120,10 +120,9 @@ public class LecturaEscrituraFicheros {
 					String fraseFinal = "";
 					for (int i = 0; i< fraseSeparadaEnFrasesPeques.length; i++) {
 						fraseFinal = fraseFinal.concat(fraseSeparadaEnFrasesPeques[i]);
-					}
+					}					
 					
-					
-					
+					fraseFinal = "INSERT INTO ".concat(nombreTabla).concat(" VALUES (").concat(fraseFinal).concat(")\n");
 					// escribir la linea completa con una concat de todas las líneas pequeñas
 					escribirEnFichero(fraseFinal);
 				}

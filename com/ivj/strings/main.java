@@ -23,9 +23,6 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		boolean columnaFinal = false;			
-		int opcion = 2;
-		
 		System.out.print("Teclee el nombre que tendrá la columna:");
 		String nombreTabla = LeerDatos.leerStringUTF8();
 		
@@ -38,14 +35,10 @@ public class main {
 		String completo2 = "C:\\Users\\SSDIsrael\\Desktop\\ficheros\\TABLAS\\"  +nombreTabla+".txt";   //LeerDatos.leerStringUTF8();			
 		
 		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(completo1,completo2 );		
-		tra.tratarFichero(columnaFinal);
-		
-		///////////////////////////////////////////////////////concatenar tablas/////////////////////////////////////////////////////////////
-		String [] todosPath = new File("C:\\Users\\SSDIsrael\\Desktop\\ficheros\\TABLAS").list();
-		
-		
-		
+		tra.tratarFichero(nombreTabla);
+			
 	}
+
 	
 	
 	/**
