@@ -1,4 +1,4 @@
-package com.ivj.strings;
+package com.ivj.creaTablaSQL;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;

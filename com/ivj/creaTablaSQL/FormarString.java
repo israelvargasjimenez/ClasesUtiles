@@ -1,4 +1,4 @@
-package com.ivj.strings;
+package com.ivj.creaTablaSQL;
 
 public class FormarString {
 
