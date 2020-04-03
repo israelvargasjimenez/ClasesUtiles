@@ -26,6 +26,7 @@ public class FormarString {
 	 * @return frase String
 	 *
 	 */
+	//FALTA PONER RECONOCIMIENTO DE DATO
 	public static String delimitarString(String frase, boolean ultima) {
 		frase = "".concat(frase.strip());
 		if (ultima) {
