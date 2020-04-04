@@ -110,7 +110,10 @@ public class LecturaEscrituraFicheros {
 					//Separar la linea en frases utilizando los marcadores
 					String [] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");					
 					//Se quitan los espacios entre frases por delante y por detras
-					for ( int i = 0; i < fraseSeparadaEnFrasesPeques.length-1; i++) {						
+					for ( int i = 0; i < fraseSeparadaEnFrasesPeques.length-1; i++) {
+						//Se sustituyen las comas intercaladas en las frases pequeñas por puntos
+						fraseSeparadaEnFrasesPeques[i] = "".concat(FormarString.sustituyeComasPorPuntos(fraseSeparadaEnFrasesPeques[i]));
+						//Se acotan las frase pequeñas por comas según corresponda en cada caso
 						fraseSeparadaEnFrasesPeques[i] =  "".concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i],false));
 					}	
 					//Se escribe la última mini frase

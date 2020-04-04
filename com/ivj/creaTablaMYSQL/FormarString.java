@@ -26,12 +26,22 @@ public class FormarString {
 	 * @return frase String
 	 *
 	 */
-	//FALTA PONER RECONOCIMIENTO DE DATO
 	public static String delimitarString(String frase, boolean ultima) {
 		frase = "".concat(frase.strip());
 		if (ultima) {
 			return frase = "'".concat(frase).concat("'");
 		}
 		return frase = "'".concat(frase).concat("'").concat(",");
+	}
+	
+	
+	/**
+	 * Metodo que sustituye las comas por puntos en un dato del tipo String
+	 * pasado como argumento
+	 * @param frase String
+	 * @return fraseConPuntos
+	 */
+	public static String sustituyeComasPorPuntos(String frase) {		
+		return frase.replace(',', '.');		
 	}
 }
