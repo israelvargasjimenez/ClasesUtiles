@@ -1,4 +1,4 @@
-package com.ivj.creaTablaSQL;
+package com.ivj.creaTablaSQLSERVER;
 
 import java.io.File;
 import java.nio.charset.Charset;

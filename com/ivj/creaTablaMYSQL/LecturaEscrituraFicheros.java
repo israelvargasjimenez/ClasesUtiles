@@ -1,4 +1,4 @@
-package com.ivj.creaTablaSQL;
+package com.ivj.creaTablaMYSQL;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;

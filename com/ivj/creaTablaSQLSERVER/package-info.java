@@ -5,4 +5,4 @@
  * @author SSDIsrael
  *
  */
-package com.ivj.creaTablaSQL;
+package com.ivj.creaTablaSQLSERVER;
