@@ -8,6 +8,18 @@ import java.util.Set;
 
 import com.ivj.utiles.LeerDatos;
 
+/**
+ * 
+ * Programa que crea los textos para insertar datos en una tabla de SQLSERVER
+ * OJO es necesario que haya una fila en blanco antes de la primera fila de datos en el archivo a leer
+ * OJO los datos de cada columnan deben de estar separados por ':' se recomienda pegar todas las columnas de una 
+ * tabla en una hoja excel he insertar una columna con ':' entre cada columna
+ * 
+ * @author Israel Vargas
+ * @version 1  4-4-2020
+ */
+
+
 public class main {
 	/// Almacena todas las líneas con las instrucciones insert
 	static ArrayList<String> todasLineasCompletas = new ArrayList<String>();

@@ -1,6 +1,19 @@
 package com.ivj.creaTablaMYSQL;
 
 import java.io.File;
+
+
+
+/**
+ * 
+ * Programa que crea los textos para insertar datos en una tabla de MYSQL
+ * OJO es necesario que haya una fila en blanco antes de la primera fila de datos en el archivo a leer
+ * OJO los datos de cada columnan deben de estar separados por ':' se recomienda pegar todas las columnas de una 
+ * tabla en una hoja excel he insertar una columna con ':' entre cada columna
+ * 
+ * @author Israel Vargas
+ * @version 1  4-4-2020
+ */
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,7 +45,9 @@ public class main {
 		String completo1 =LeerDatos.leerStringUTF8();
 		
 		System.out.print("Teclee el path del archivo de salida:");
-		String completo2 = LeerDatos.leerStringUTF8();			
+		String completo2 = LeerDatos.leerStringUTF8();	
+		String aux = completo2.concat("\\").concat(nombreTabla).concat(".txt");
+		completo2 = "".concat(aux);
 		
 		LecturaEscrituraFicheros tra = new LecturaEscrituraFicheros(completo1,completo2 );		
 		tra.tratarFichero(nombreTabla);
