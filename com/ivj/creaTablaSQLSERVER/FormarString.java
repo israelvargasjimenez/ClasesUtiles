@@ -33,4 +33,14 @@ public class FormarString {
 		}
 		return frase = "'".concat(frase).concat("'").concat(",");
 	}
+	
+	/**
+	 * Metodo que sustituye el caracter oldCaracter por el caracter newCaracter
+	 * en la frase pasada como argumento
+	 * @param frase String
+	 * @return frase String
+	 */
+	public static String sustituyeCaracteres(String frase, char oldCaracter, char newCaracter) {		
+		return frase.replace(oldCaracter,newCaracter);		
+	}
 }
