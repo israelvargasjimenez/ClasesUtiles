@@ -29,7 +29,7 @@ public class main {
 		
 				
 		System.out.print("Teclee el path del archivo a leer:");
-		String completo1 = LeerDatos.leerStringUTF8();
+		String completo1 =LeerDatos.leerStringUTF8();
 		
 		System.out.print("Teclee el path del archivo de salida:");
 		String completo2 = LeerDatos.leerStringUTF8();			
