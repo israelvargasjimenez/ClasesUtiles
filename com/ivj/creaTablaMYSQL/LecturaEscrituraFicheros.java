@@ -122,7 +122,7 @@ public class LecturaEscrituraFicheros {
 						fraseFinal = fraseFinal.concat(fraseSeparadaEnFrasesPeques[i]);
 					}					
 					
-					fraseFinal = "INSERT INTO ".concat(nombreTabla).concat(" VALUES (").concat(fraseFinal).concat(")\n");
+					fraseFinal = "INSERT INTO ".concat(nombreTabla).concat(" VALUES (").concat(fraseFinal).concat(");\n");
 					// escribir la linea completa con una concat de todas las líneas pequeñas
 					escribirEnFichero(fraseFinal);
 				}
