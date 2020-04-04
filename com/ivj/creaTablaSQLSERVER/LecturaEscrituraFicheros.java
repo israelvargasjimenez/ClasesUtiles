@@ -90,7 +90,7 @@ public class LecturaEscrituraFicheros {
 
 	/**
 	 * Metodo que se encarga de leer cada linea del fichero y llama a los metodos
-	 * 
+	 * OJO es necesario que haya una fila en blanco antes de la primera fila de datos en el archivo a leer
 	 * @param pathFicheroATratar String
 	 */
 	public void tratarFichero(String nombreTabla) {
@@ -103,27 +103,33 @@ public class LecturaEscrituraFicheros {
 
 			int contador = 0;
 			while ((lineaLeida = br.readLine()) != null) {
+				if (contador == 0) {
+					contador++;
+					continue;
+				} else {
+					// Separar la linea en frases utilizando los marcadores
+					String[] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");
+					// Se quitan los espacios entre frases por delante y por detras
+					for (int i = 0; i < fraseSeparadaEnFrasesPeques.length - 1; i++) {
+						fraseSeparadaEnFrasesPeques[i] = ""
+								.concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false));
+					}
+					// Se escribe la última mini frase
+					fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1] = ""
+							.concat(FormarString.delimitarString(
+									fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1], true));
 
-				// Separar la linea en frases utilizando los marcadores
-				String[] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");
-				// Se quitan los espacios entre frases por delante y por detras
-				for (int i = 0; i < fraseSeparadaEnFrasesPeques.length - 1; i++) {
-					fraseSeparadaEnFrasesPeques[i] = ""
-							.concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false));
+					// Guarda la frase completa
+					String fraseFinal = "";
+					for (int i = 0; i < fraseSeparadaEnFrasesPeques.length; i++) {
+						fraseFinal = fraseFinal.concat(fraseSeparadaEnFrasesPeques[i]);
+					}
+
+					fraseFinal = "INSERT INTO ".concat(nombreTabla).concat(" VALUES (").concat(fraseFinal)
+							.concat(")\n");
+					// escribir la linea completa con una concat de todas las líneas pequeñas
+					escribirEnFichero(fraseFinal);
 				}
-				// Se escribe la última mini frase
-				fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1] = "".concat(FormarString
-						.delimitarString(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1], true));
-
-				// Guarda la frase completa
-				String fraseFinal = "";
-				for (int i = 0; i < fraseSeparadaEnFrasesPeques.length; i++) {
-					fraseFinal = fraseFinal.concat(fraseSeparadaEnFrasesPeques[i]);
-				}
-
-				fraseFinal = "INSERT INTO ".concat(nombreTabla).concat(" VALUES (").concat(fraseFinal).concat(")\n");
-				// escribir la linea completa con una concat de todas las líneas pequeñas
-				escribirEnFichero(fraseFinal);
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
