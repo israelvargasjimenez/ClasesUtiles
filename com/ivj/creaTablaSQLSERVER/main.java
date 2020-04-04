@@ -23,11 +23,9 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		System.out.print("Teclee el nombre que tendrá la columna:");
+		System.out.print("Teclee el nombre que tendrá la tabla:");
 		String nombreTabla = LeerDatos.leerStringUTF8();
-		
-		
-				
+			
 		System.out.print("Teclee el path del archivo a leer:");
 		String completo1 = LeerDatos.leerStringUTF8();
 		

@@ -36,12 +36,12 @@ public class FormarString {
 	
 	
 	/**
-	 * Metodo que sustituye las comas por puntos en un dato del tipo String
-	 * pasado como argumento
+	 * Metodo que sustituye el caracter oldCaracter por el caracter newCaracter
+	 * en la frase pasada como argumento
 	 * @param frase String
-	 * @return fraseConPuntos
+	 * @return frase String
 	 */
-	public static String sustituyeComasPorPuntos(String frase) {		
-		return frase.replace(',', '.');		
+	public static String sustituyeCaracteres(String frase, char oldCaracter, char newCaracter) {		
+		return frase.replace(oldCaracter,newCaracter);		
 	}
 }

@@ -90,7 +90,7 @@ public class LecturaEscrituraFicheros {
 
 	/**
 	 * Metodo que se encarga de leer cada linea del fichero y llama a los metodos
-	 * 
+	 *  OJO el archivo con los datos a leer, debe contener una linea en blanco.
 	 * @param pathFicheroATratar String
 	 */
 	public void tratarFichero(String nombreTabla) {
@@ -111,8 +111,10 @@ public class LecturaEscrituraFicheros {
 					String [] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");					
 					//Se quitan los espacios entre frases por delante y por detras
 					for ( int i = 0; i < fraseSeparadaEnFrasesPeques.length-1; i++) {
+						//Se quitan el signos de interrogación que aparecía en la primera linea de forma no deseada
+						fraseSeparadaEnFrasesPeques[i] = "".concat(FormarString.sustituyeCaracteres(fraseSeparadaEnFrasesPeques[i], '?',' '));
 						//Se sustituyen las comas intercaladas en las frases pequeñas por puntos
-						fraseSeparadaEnFrasesPeques[i] = "".concat(FormarString.sustituyeComasPorPuntos(fraseSeparadaEnFrasesPeques[i]));
+						fraseSeparadaEnFrasesPeques[i] = "".concat(FormarString.sustituyeCaracteres(fraseSeparadaEnFrasesPeques[i], ',','.'));
 						//Se acotan las frase pequeñas por comas según corresponda en cada caso
 						fraseSeparadaEnFrasesPeques[i] =  "".concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i],false));
 					}	
