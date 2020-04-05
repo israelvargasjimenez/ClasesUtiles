@@ -404,7 +404,7 @@ public class LeerDatos {
 		// Se comprueba uno por uno los caracteres por si son números
 		// y se guarda la respuesta en el ArrayList<boolean> respuestas
 		for (int i = 0; i < digitosseparados.length; i++) {
-			if (Character.isDigit(digitosseparados[i])) {
+			if (Character.isDigit(digitosseparados[i]) || Character.toString(digitosseparados[i]).equals(".")) {
 				continue;
 			} else {
 				encontrados++;
