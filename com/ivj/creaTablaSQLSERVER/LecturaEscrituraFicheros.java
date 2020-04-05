@@ -6,12 +6,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.Arrays;
+
+import com.ivj.utiles.LeerDatos;
+
 import java.io.FileReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
-import com.ivj.utiles.LeerDatos;;
+//import com.ivj.utiles.LeerDatos;
 
 public class LecturaEscrituraFicheros {
 	// Almacena el path pasado como argumento al constructor para las operaciones
@@ -90,7 +93,9 @@ public class LecturaEscrituraFicheros {
 
 	/**
 	 * Metodo que se encarga de leer cada linea del fichero y llama a los metodos
-	 * OJO es necesario que haya una fila en blanco antes de la primera fila de datos en el archivo a leer
+	 * OJO es necesario que haya una fila en blanco antes de la primera fila de
+	 * datos en el archivo a leer
+	 * 
 	 * @param pathFicheroATratar String
 	 */
 	public void tratarFichero(String nombreTabla) {
@@ -109,15 +114,33 @@ public class LecturaEscrituraFicheros {
 				} else {
 					// Separar la linea en frases utilizando los marcadores
 					String[] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");
-					// Se quitan los espacios entre frases por delante y por detras
+					
+					// Se quitan los espacios entre frases por delante y por detras y se detecta si se trata
+					// de un numero o no
 					for (int i = 0; i < fraseSeparadaEnFrasesPeques.length - 1; i++) {
-						fraseSeparadaEnFrasesPeques[i] = ""
-								.concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false));
+						//Se quitan los espacios anteriores y posteriores a la frase
+						fraseSeparadaEnFrasesPeques[i] = "".concat(fraseSeparadaEnFrasesPeques[i].strip());
+						//Se sustituyen las comas por puntos
+						fraseSeparadaEnFrasesPeques[i] = "".concat(FormarString.sustituyeCaracteres(fraseSeparadaEnFrasesPeques[i], ',', '.'));
+						//Se da formato a la frase según sea String o números
+						if (LeerDatos.isSoloNumbers(fraseSeparadaEnFrasesPeques[i])) {
+							fraseSeparadaEnFrasesPeques[i] = ""
+									.concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false, true));
+						} else {
+							fraseSeparadaEnFrasesPeques[i] = ""
+									.concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false, false));
+						}
 					}
 					// Se escribe la última mini frase
-					fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1] = ""
-							.concat(FormarString.delimitarString(
-									fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1], true));
+					if (LeerDatos.isSoloNumbers(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length-1])) {
+						fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1] = "".concat(FormarString
+								.delimitarString(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1],
+										true, true));
+					} else {
+						fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1] = "".concat(FormarString
+								.delimitarString(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1],
+										true, false));
+					}
 
 					// Guarda la frase completa
 					String fraseFinal = "";
