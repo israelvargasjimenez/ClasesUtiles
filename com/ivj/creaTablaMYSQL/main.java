@@ -36,16 +36,16 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		System.out.print("Teclee el nombre que tendrá la tabla:");
-		String nombreTabla = LeerDatos.leerStringUTF8();
+		//System.out.print("Teclee el nombre que tendrá la tabla:");
+		String nombreTabla = "productos_pedidos" ; //LeerDatos.leerStringUTF8();
 		
 		
 				
-		System.out.print("Teclee el path del archivo a leer:");
-		String completo1 =LeerDatos.leerStringUTF8();
+		//System.out.print("Teclee el path del archivo a leer:");
+		String completo1 =  "C:\\Users\\Israel\\Desktop\\caja\\fichero.txt";//LeerDatos.leerStringUTF8();
 		
-		System.out.print("Teclee el path del archivo de salida:");
-		String completo2 = LeerDatos.leerStringUTF8();	
+		//System.out.print("Teclee el path del archivo de salida:");
+		String completo2 =  "C:\\Users\\Israel\\Desktop\\caja\\covertida"; //LeerDatos.leerStringUTF8();	
 		String aux = completo2.concat("\\").concat(nombreTabla).concat(".txt");
 		completo2 = "".concat(aux);
 		

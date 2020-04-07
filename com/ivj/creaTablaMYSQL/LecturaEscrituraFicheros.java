@@ -110,23 +110,29 @@ public class LecturaEscrituraFicheros {
 				} else {
 					// Separar la linea en frases utilizando los marcadores
 					String[] fraseSeparadaEnFrasesPeques = lineaLeida.split(":");
-					// Se quitan los espacios entre frases por delante y por detras
-					for (int i = 0; i < fraseSeparadaEnFrasesPeques.length - 1; i++) {
-						// Se quitan el signos de interrogación que aparecía en la primera linea de
-						// forma no deseada
-						fraseSeparadaEnFrasesPeques[i] = ""
-								.concat(FormarString.sustituyeCaracteres(fraseSeparadaEnFrasesPeques[i], '?', ' '));
+					
+					for (int i = 0; i < fraseSeparadaEnFrasesPeques.length - 1; i++) {						
 						// Se sustituyen las comas intercaladas en las frases pequeñas por puntos
 						fraseSeparadaEnFrasesPeques[i] = ""
 								.concat(FormarString.sustituyeCaracteres(fraseSeparadaEnFrasesPeques[i], ',', '.'));
+						// Se quitan los espacios entre frases por delante y por detras
+						fraseSeparadaEnFrasesPeques[i] = "".concat(fraseSeparadaEnFrasesPeques[i].strip());
 						// Se acotan las frase pequeñas por comas según corresponda en cada caso
 						fraseSeparadaEnFrasesPeques[i] = ""
-								.concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false));
+								.concat(FormarString.delimitarString(fraseSeparadaEnFrasesPeques[i], false,LeerDatos.isSoloNumbers(fraseSeparadaEnFrasesPeques[i])));
 					}
+					
+					// Se sustituyen las comas intercaladas en las frases pequeñas por puntos
+					fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1] = ""
+							.concat(FormarString.sustituyeCaracteres(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1], ',', '.'));
+					
+					// Se quitan los espacios entre frases por delante y por detras
+					fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1]= "".concat(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1].strip());
+					
 					// Se escribe la última mini frase
 					fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1] = ""
 							.concat(FormarString.delimitarString(
-									fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1], true));
+									fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1], true, LeerDatos.isSoloNumbers(fraseSeparadaEnFrasesPeques[fraseSeparadaEnFrasesPeques.length - 1])));
 
 					// Guarda la frase completa
 					String fraseFinal = "";
