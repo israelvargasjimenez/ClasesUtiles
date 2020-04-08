@@ -16,7 +16,7 @@ public class FormarString {
 	 *
 	 */
 	public static String delimitarString(String frase, boolean ultima, boolean numero) {
-		//frase = "".concat(frase.strip());
+		frase = "".concat(frase.strip());
 		if (numero) {
 			return frase = frase.concat(",");
 		} else {
