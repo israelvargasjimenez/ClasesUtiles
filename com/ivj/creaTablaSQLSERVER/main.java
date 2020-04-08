@@ -42,7 +42,7 @@ public class main {
 		String completo1 = LeerDatos.leerStringUTF8();
 		
 		System.out.print("Teclee el path del archivo de salida:");
-		String completo2 = LeerDatos.leerStringUTF8();	
+		String completo2 =  LeerDatos.leerStringUTF8();	
 		String aux = completo2.concat("\\").concat(nombreTabla).concat(".txt");
 		completo2 = "".concat(aux);
 		
