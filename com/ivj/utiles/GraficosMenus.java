@@ -1,4 +1,4 @@
-package pri.ivj.tarea1;
+package com.ivj.utiles;
 
 /**
  * Clase que realiza una  maquetación  sencilla de la salida de textos por pantalla
