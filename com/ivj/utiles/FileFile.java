@@ -51,23 +51,25 @@ public class FileFile extends File {
 			return path.substring(0,contador);
 	}
 	
+	
+	
 	/**
-	 * Metodo que devuelve el path pasado como argumento sin extensión, 
+	 * Metodo que devuelve la extensión del fichero correspondiente al path pasado como argumento
 	 *
 	 */
-	public String getExtension(String path) {		
-			//Variable que almacena el tamaño del string pasado como argumento		
-			int contador = path.length();
-			
-			//Almacena el caracter de turno
-			Character caracter = path.charAt(contador-1);
-			
-			//Se busca el valor de contador que hará de tamaño maximo del string
-			// a devolver
-			while(contador > 0 && caracter!= '.' ) {
-				contador--;
-				caracter =  path.charAt(contador);
-			}			
-			return path.substring(contador);
+	public static String getExtension(String path) {
+		// Variable que almacena el tamaño del string pasado como argumento
+		int contador = path.length();
+
+		// Almacena el caracter de turno
+		Character caracter = path.charAt(contador - 1);
+
+		// Se busca el valor de contador que hará de tamaño maximo del string
+		// a devolver
+		while (contador > 0 && caracter != '.') {
+			contador--;
+			caracter = path.charAt(contador);
+		}
+		return path.substring(contador);
 	}
 }
