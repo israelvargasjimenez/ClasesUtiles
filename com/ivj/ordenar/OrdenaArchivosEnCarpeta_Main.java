@@ -18,7 +18,7 @@ public class OrdenaArchivosEnCarpeta_Main {
 
 	public static void main(String[] args) {
 		//Pide y almacena el path del directorio a ordenar
-		String pathCarpetaDesordenada = "C:\\Users\\Israel\\Desktop\\Curso java pildoras"; //devuelvePath();
+		String pathCarpetaDesordenada = "A:\\CURSOS ISRAEL PARA REALIZAR\\Curso java pildoras"; //devuelvePath();
 		
 		// Path del fichero antes de ordenarse
 		String pathDeFichero;
@@ -32,12 +32,6 @@ public class OrdenaArchivosEnCarpeta_Main {
 			System.out.println(pathString);
 		}
 		
-		System.out.println(Arrays.toString(todosArchivos));
-
-		
-		
-		
-
 	}
 
 	/**
