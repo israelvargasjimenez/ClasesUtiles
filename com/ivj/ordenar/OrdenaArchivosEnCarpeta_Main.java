@@ -27,73 +27,57 @@ public class OrdenaArchivosEnCarpeta_Main {
 		do {
 			existe = false;
 			// jjjPide y almacena el path del directorio a ordenar
-			pathCarpetaDesordenada = "C:\\Users\\cuarto\\Desktop\\Curso java pildora"; // pildorasdevuelvePath();
+			pathCarpetaDesordenada = "C:\\Users\\cuarto\\Desktop\\Curso java pildoras"; // devuelvePath();
 			fileAux = new File(pathCarpetaDesordenada);
 			existe = fileAux.exists();
 		} while (!existe);
 
-		//  Listado de los path de todos los archivos dentro del directorio a ordenar
+		// Listado de los path de todos los archivos dentro del directorio a ordenar
 		File[] todosArchivos = fileAux.listFiles();
-		
-		
-		
+		// System.out.println(todosArchivos.toString());
 
-		// ArrayList que almacena los archivos .txt
-		ArrayList<File> archivosTXT = new ArrayList<File>();
+//		// ArrayList que almacena los archivos .txt
+//		ArrayList<File> archivosTXT = new ArrayList<File>();
+//
+//		// ArrayList que almacena los archivos .m4a
+//		ArrayList<File> archivosM4A = new ArrayList<File>();
+//
+//		// ArrayList que almacena los archivos .m4a
+//		ArrayList<File> archivosSRT = new ArrayList<File>();
+//
+//		// ArrayList que almacena los archivos .m4a
+//		ArrayList<File> archivosJPG = new ArrayList<File>();
+//
+//		// ArrayList que almacena los archivos .m4a
+//		ArrayList<File> archivosMP4 = new ArrayList<File>();
+//
+//		//Se guardan los path según la extensión del archivo
+//		for (int i = 0; i < todosArchivos.length; i++) {
+//			switch (getExtension(todosArchivos[i])) {
+//			case TXT: archivosTXT.add(todosArchivos[i]);
+//				break; 
+//			case JPG: archivosJPG.add(todosArchivos[i]);
+//				break;
+//			case SRT: archivosSRT.add(todosArchivos[i]);
+//				break;
+//			case MP4: archivosMP4.add(todosArchivos[i]);
+//				break;
+//			case M4A: archivosM4A.add(todosArchivos[i]);
+//				break;
+//			default:
+//				;
+//			}
+//		}
 
-		// ArrayList que almacena los archivos .m4a
-		ArrayList<File> archivosM4A = new ArrayList<File>();
-
-		// ArrayList que almacena los archivos .m4a
-		ArrayList<File> archivosSRT = new ArrayList<File>();
-
-		// ArrayList que almacena los archivos .m4a
-		ArrayList<File> archivosJPG = new ArrayList<File>();
-
-		// ArrayList que almacena los archivos .m4a
-		ArrayList<File> archivosMP4 = new ArrayList<File>();
-
-		//Se guardan los path según la extensión del archivo
-		for (int i = 0; i < todosArchivos.length; i++) {
-			switch (getExtension(todosArchivos[i])) {
-			case TXT: archivosTXT.add(todosArchivos[i]);
-				break; 
-			case JPG: archivosJPG.add(todosArchivos[i]);
-				break;
-			case SRT: archivosSRT.add(todosArchivos[i]);
-				break;
-			case MP4: archivosMP4.add(todosArchivos[i]);
-				break;
-			case M4A: archivosM4A.add(todosArchivos[i]);
-				break;
-			default:
-				;
-			}
-		}
-		
-		for ( File file: archivosSRT) {	
-			file.delete();
-		}
-		
 		// Crear directorio que aloja todos los capitulos
 		crearDirectorio("C:\\Users\\Israel\\Desktop\\nuevo");
-		
-		
+	
 
-		for (File file : archivosMP4) {	
-			System.out.println(pathSinExtension(file));
-						
-		}
-		
-		
-		for (File file : archivosMP4) {	
-			File auxFile = new File(pathSinExtension(file));
-			auxFile.mkdir();			
-		}
-	}
-
+		// Se crean los directorios necesarios según se encuentren en el bucle
 
 	
+	}
+
 	/**
 	 * Metodo que devuelve 1 si ha creado el directorio correctamente devuelve 0 si
 	 * no se ha creado el directorio devuelve -1 si se ha producido una excepción de
@@ -121,7 +105,6 @@ public class OrdenaArchivosEnCarpeta_Main {
 		return creado;
 	}
 
-	
 	/**
 	 * Metodo que devuelve true si el path pasado como argumento se encuentra ya
 	 * guardado en el ArrayList pasado como argumento
@@ -130,7 +113,7 @@ public class OrdenaArchivosEnCarpeta_Main {
 	 * @param listaPath
 	 * @return
 	 */
-	private static boolean pathYaGuardado(String path, ArrayList<String> listaPath) {
+	private static boolean yaCreado(String path, ArrayList<String> listaPath) {
 		for (String pathAux : listaPath) {
 			if (pathAux.equals(path)) {
 				return true;
@@ -138,7 +121,6 @@ public class OrdenaArchivosEnCarpeta_Main {
 		}
 		return false;
 	}
-	
 
 	/**
 	 * Metodo que pide y devuelve el path del directorio a ordenar en carpetas
@@ -154,31 +136,29 @@ public class OrdenaArchivosEnCarpeta_Main {
 		System.out.println();
 		return path;
 	}
-	
-	
+
 	/**
 	 * Metodo que devuelve el path pasado como argumento sin extensión,
 	 *
 	 */
 	private static String pathSinExtension(File file) {
-		
+
 		// Variable que almacena el tamaño del string pasado como argumento
-		int contador = file.getName().length();
+		int contador = file.getPath().length();
 
 		// Almacena el caracter de turno
-		Character caracter = file.getName().charAt(contador - 1);
+		Character caracter = file.getPath().charAt(contador - 1);
 
 		// Se busca el valor de contador que hará de tamaño maximo del string
 		// a devolver
 		while (contador > 0 && caracter != '.') {
 			contador--;
-			caracter = file.getName().charAt(contador);
-		}	
+			caracter = file.getPath().charAt(contador);
+		}
+		System.out.println(file.toString().substring(0, contador));
 		return file.toString().substring(0, contador);
 	}
-	
-	
-	
+
 	/**
 	 * Metodo que devuelve la extensión del fichero correspondiente al path pasado
 	 * como argumento
