@@ -31,24 +31,26 @@ public class FileFile extends File {
 		
 	
 
+
 	/**
-	 * Metodo que devuelve el path pasado como argumento sin extensión, 
+	 * Metodo que devuelve el path pasado como argumento sin extensión,
 	 *
 	 */
-	public String getPathWithOutExtention(String path) {		
-			//Variable que almacena el tamaño del string pasado como argumento		
-			int contador = path.length();
-			
-			//Almacena el caracter de turno
-			Character caracter = path.charAt(contador-1);
-			
-			//Se busca el valor de contador que hará de tamaño maximo del string
-			// a devolver
-			while(contador > 0 && caracter!= '.' ) {
-				contador--;
-				caracter =  path.charAt(contador);
-			}			
-			return path.substring(0,contador);
+	public static String pathNoExtension(File file) {
+		
+		// Variable que almacena el tamaño del string pasado como argumento
+		int contador = file.getPath().length();
+
+		// Almacena el caracter de turno
+		Character caracter = file.getPath().charAt(contador - 1);
+
+		// Se busca el valor de contador que hará de tamaño maximo del string
+		// a devolver
+		while (contador > 0 && caracter != '.') {
+			contador--;
+			caracter = file.getPath().charAt(contador);
+		}	
+		return file.toString().substring(0, contador);
 	}
 	
 	
