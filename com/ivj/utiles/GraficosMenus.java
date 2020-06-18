@@ -22,9 +22,10 @@ public class GraficosMenus {
 	 * @param cantidadCaracteresLaterales: int
 	 * @param espaciosLaterales: int
 	 * @param tabulacion:int
+	 * @param cantidadCaracteresVerticales:nt
 	 */
-	public static void imprimeMarcoConTexto(ArrayList<String> textos, char caracter, int cantidadCaracteresLaterales,
-			int cantidadCaracteresVerticales, int espaciosLaterales, int tabulacion) {
+	public static void imprimeMarcoTabIzqConTextoInsertado(ArrayList<String> textos, char caracter,
+			int cantidadCaracteresLaterales, int cantidadCaracteresVerticales, int espaciosLaterales, int tabulacion) {
 		// Caracteres máximos de la frase mayor en textos
 		int caracteresTotales = 0;
 
@@ -34,6 +35,7 @@ public class GraficosMenus {
 		/// Se averigua los caracteres máximos a utilizar
 		for (String frase : textos) {
 			if (caracteresTotales < frase.length() + (espaciosLaterales * 2) + (cantidadCaracteresLaterales * 2)) {
+
 				caracteresTotales = frase.length() + (espaciosLaterales * 2) + (cantidadCaracteresLaterales * 2);
 			}
 		}
@@ -96,6 +98,91 @@ public class GraficosMenus {
 	}
 
 	/**
+	 * Metodo que imprime marco centrado en pantalla, con texto pasado como
+	 * argumento insertado.
+	 * 
+	 * @param textos:ArrayList
+	 * @param caracter: char
+	 * @param cantidadCaracteresLaterales: int
+	 * @param espaciosLaterales: int
+	 * @param centroReferencia:int
+	 * @param cantidadCaracteresVerticales:int
+	 */
+	public static void imprimeMarcoCentradoConTextoInsertado(ArrayList<String> textos, char caracter,
+			int cantidadCaracteresLaterales, int cantidadCaracteresVerticales, int espaciosLaterales,
+			int centroReferencia) {
+		// Caracteres máximos de la frase mayor en textos
+		int caracteresTotales = 0;
+
+		// variable que almacena el contador de caracteres utilizados en la frase actual
+		int contador = 0;
+
+		/// Se averigua los caracteres máximos a utilizar
+		for (String frase : textos) {
+			if (caracteresTotales < frase.length() + (espaciosLaterales * 2) + (cantidadCaracteresLaterales * 2)) {
+
+				caracteresTotales = frase.length() + (espaciosLaterales * 2) + (cantidadCaracteresLaterales * 2);
+			}
+		}
+
+		// Se imprimen las lineas superiores del marco
+		for (int b = 0; b < cantidadCaracteresVerticales; b++) {
+			// Se aplica la tabulación indicada segun el centrado a aplicar
+			centrado(caracteresTotales, centroReferencia);
+			for (int i = 0; i < caracteresTotales; i++) {
+				System.out.print(caracter);
+			}
+			System.out.println();
+		}
+
+		// Se recorre el ArrayList pasado como argumento
+		for (int i = 0; i < textos.size(); i++) {
+			contador = caracteresTotales;
+
+			// Se aplica la tabulación indicada segun el centrado a aplicar
+			centrado(caracteresTotales, centroReferencia);
+
+			// Se imprimen los caracteres laterales
+			for (int j = 0; j < cantidadCaracteresLaterales; j++) {
+				System.out.print(caracter);
+				contador--;
+			}
+
+			// Se imprimen los espacios laterales izquierdos
+			for (int j = 0; j < espaciosLaterales; j++) {
+				System.out.print(" ");
+				contador--;
+			}
+
+			// Se imprime la frase de turno
+			System.out.print(textos.get(i));
+			contador = contador - (textos.get(i).length());
+
+			// Se imprimen los espacios laterales derechos
+			for (int j = 0; j < (contador - cantidadCaracteresLaterales); j++) {
+				System.out.print(" ");
+			}
+
+			// Se imprimen los caracteres finales
+			for (int j = 0; j < cantidadCaracteresLaterales; j++) {
+				System.out.print(caracter);
+			}
+			System.out.println();
+			// Se recarga el contador de caracteres consumidos, para la siguientes línea
+			contador = caracteresTotales;
+		}
+		for (int c = 0; c < cantidadCaracteresVerticales; c++) {
+			// Se aplica la tabulación indicada segun el centrado a aplicar
+			centrado(caracteresTotales, centroReferencia);
+			// Se imprime la linea inferior del marco
+			for (int i = 0; i < caracteresTotales; i++) {
+				System.out.print(caracter);
+			}
+			System.out.println();
+		}
+	}
+
+	/**
 	 * Metodo que imprime la linea de texto pasada como argumento, dentro de un
 	 * marco realizado con el caracter pasado como argumento.
 	 * 
@@ -106,7 +193,7 @@ public class GraficosMenus {
 	 * @param tabulacion: int
 	 */
 
-	public static void imprimeMarcoConLineaTexto(String lineaTexto, char caracter, int cantidadCaracteresLaterales,
+	public static void imprimeMarcoTabIzqConString(String lineaTexto, char caracter, int cantidadCaracteresLaterales,
 			int espaciosLaterales, int tabulacion) {
 		// Caracteres máximos de la frase mayor en textos
 		int caracteresTotales = lineaTexto.length() + (espaciosLaterales * 2) + (cantidadCaracteresLaterales * 2);
@@ -160,6 +247,79 @@ public class GraficosMenus {
 
 		// Se aplica la tabulación indicada
 		tabular(tabulacion);
+
+		// Se imprime la linea inferior del marco
+		for (int i = 0; i < caracteresTotales; i++) {
+			System.out.print(caracter);
+		}
+		System.out.println();
+	}
+
+	/**
+	 * Metodo que imprime la linea de texto pasada como argumento, dentro de un
+	 * marco realizado con el caracter pasado como argumento.
+	 * 
+	 * @param lineaTexto:String
+	 * @param caracter:char
+	 * @param cantidadCaracteresLaterales:int
+	 * @param espaciosLaterales:int
+	 * @param centroReferencia:int
+	 */
+
+	public static void imprimeMarcoCentradoConString(String lineaTexto, char caracter, int cantidadCaracteresLaterales,
+			int espaciosLaterales, int centroReferencia) {
+		// Caracteres máximos de la frase mayor en textos
+		int caracteresTotales = lineaTexto.length() + (espaciosLaterales * 2) + (cantidadCaracteresLaterales * 2);
+
+		// variable que almacena el contador de caracteres utilizados en la frase actual
+		int contador = 0;
+
+		// Se aplica el centrado indicado
+		centrado(caracteresTotales, centroReferencia);
+
+		// Se imprime la linea superior del marco
+		for (int i = 0; i < caracteresTotales; i++) {
+			System.out.print(caracter);
+		}
+		System.out.println();
+
+		// Se aplica el centrado indicado
+		centrado(caracteresTotales, centroReferencia);
+
+		// Se inicializa el contador de caracteres consumidos
+		contador = caracteresTotales;
+
+		// Se imprimen los caracteres laterales
+		for (int j = 0; j < cantidadCaracteresLaterales; j++) {
+			System.out.print(caracter);
+			contador--;
+		}
+
+		// Se imprimen los espacios laterales izquierdos
+		for (int j = 0; j < espaciosLaterales; j++) {
+			System.out.print(" ");
+			contador--;
+		}
+
+		// Se imprime la frase de turno
+		System.out.print(lineaTexto);
+		contador = contador - (lineaTexto.length());
+
+		// Se imprimen los espacios laterales derechos
+		for (int j = 0; j < (contador - cantidadCaracteresLaterales); j++) {
+			System.out.print(" ");
+		}
+
+		// Se imprimen los caracteres finales
+		for (int j = 0; j < cantidadCaracteresLaterales; j++) {
+			System.out.print(caracter);
+		}
+		System.out.println();
+		// Se recarga el contador de caracteres consumidos, para la siguientes línea
+		contador = caracteresTotales;
+
+		// Se aplica el centrado indicado
+		centrado(caracteresTotales, centroReferencia);
 
 		// Se imprime la linea inferior del marco
 		for (int i = 0; i < caracteresTotales; i++) {
@@ -257,6 +417,24 @@ public class GraficosMenus {
 	private static void tabular(int espacios) {
 		// Se tabula con el valor pasado como argumento
 		for (int i = 0; i < espacios; i++) {
+			System.out.print(" ");
+		}
+	}
+
+	/**
+	 * Metodo que aplica la tabulación correspondiente a los espacios pasados como
+	 * argumento
+	 * 
+	 * @param caracteresTotales:int
+	 * @param centroParaTabulado:int
+	 */
+	public static void centrado(int caracteresTotales, int centroParaTabulado) {
+		// Variable que almacena el tabulado a aplicar en cada caso para central la
+		// impresión,
+		// segun el tamaño máximo del string mayor a imprimir
+		int espaciosNecesarios = centroParaTabulado - (caracteresTotales / 2);
+		// Se tabula con el valor pasado como argumento
+		for (int i = 0; i < espaciosNecesarios; i++) {
 			System.out.print(" ");
 		}
 	}
