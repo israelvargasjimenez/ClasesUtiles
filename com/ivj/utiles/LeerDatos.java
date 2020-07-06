@@ -1,6 +1,6 @@
 package com.ivj.utiles;
 
-import java.util.ArrayList;
+import java.nio.charset.Charset;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -108,7 +108,7 @@ public class LeerDatos {
 		String frase = "";
 		do {
 			try {
-				frase = new Scanner(System.in, "UTF-8").nextLine();
+				frase = new Scanner(System.in, Charset.defaultCharset().name()).nextLine();
 				correcta = true;
 
 			} catch (NoSuchElementException e) {
@@ -157,7 +157,7 @@ public class LeerDatos {
 						numeroDetectado = false;
 						enBlanco = false;
 					}
-					frase = new Scanner(System.in).nextLine().toLowerCase();
+					frase = new Scanner(System.in, Charset.defaultCharset().name()).nextLine();
 					correcta = true;
 					palabrasString = frase.split(" ");
 					palabrasTratadas = new String[palabrasString.length];
