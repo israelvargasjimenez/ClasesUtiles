@@ -54,7 +54,7 @@ public class GUI_Israel {
 		 * @param elementos:JMenu
 		 * @return
 		 */
-		public static JMenu creaJMenu(String nombreMenu, ArrayList<Object> elementos) {
+		public static JMenu setJMenu(String nombreMenu, ArrayList<Object> elementos) {
 			// Se crea el menu
 			JMenu menuCreado = new JMenu(nombreMenu);
 
@@ -70,7 +70,7 @@ public class GUI_Israel {
 		 * Metodo que borra los elementos en el ArrayList<String> pasado como argumento
 		 * @param elementos
 		 */
-		public static void borraElementos (ArrayList<Object> elementos) {
+		public static void deleteElements (ArrayList<Object> elementos) {
 			// Se borran todos los elementos creados anteriormente en el ArrayList elementos
 			elementos.removeAll(elementos);
 		}
@@ -132,6 +132,61 @@ public class GUI_Israel {
 			}			
 			return menus;
 		}	
+		
+		
+		/**
+		 * Metodo que devuelve TODOS los JMenu que tiene una JMenuBar
+		 * @param JFrame
+		 * @return menus:JMenu[]
+		 */
+		public static JMenu[] getJMenus(JFrame frame) throws Exception {
+			//Array con los menus existentes en la JMenuBar
+			JMenu[] menus;
+			
+			//Se consigue la barra de menu
+			JMenuBar barraMenu = frame.getJMenuBar(); 
+			if (barraMenu == null) {
+				throw new Exception();
+			}
+			
+			//Se consiguen los JMenus de la barra JMenuBar
+			MenuElement[] jMenus = barraMenu.getSubElements();
+			
+			//Se crea el array con los menus a devolver
+			menus = new JMenu[jMenus.length];
+			
+			for ( int i = 0; i < jMenus.length; i++) {
+				menus[i] = (JMenu) jMenus[i];
+			}			
+			return menus;
+		}
+		
+		
+		
+		
+		/**
+		 * Metodo que devuelve el JMenu de una JMenuBar 
+		 * que coincide con el JMenuName pasado como argumento
+		 * @param JFrame
+		 * @param JMenuName
+		 * @return jMenu:JMenu
+		 */
+		public static JMenu getJMenu(JFrame frame, String JMenuName) throws Exception {
+			//Variable que almacenara el JMenu buscado
+			JMenu jMenu = null;
+			
+			//Se realiza una busqueda utilizando el JMenuName pasado como argumento
+			try {			
+				for ( JMenu jm : GUI_Israel.getJMenus(frame)) {
+					if (jm.getText().equals(JMenuName)) {
+						jMenu = jm;
+					}
+				}
+			} catch (Exception e) {
+				System.out.println("No hay barra de menu");
+			}
+			return jMenu;	
+		}
 	}
 
 
