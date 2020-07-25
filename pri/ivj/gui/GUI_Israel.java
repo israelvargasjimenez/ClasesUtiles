@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.*;
 
-public class CreaMenus {
+public class GUI_Israel {
 		
 		
 		
@@ -74,6 +74,41 @@ public class CreaMenus {
 			// Se borran todos los elementos creados anteriormente en el ArrayList elementos
 			elementos.removeAll(elementos);
 		}
+		
+		/**
+		 * Metodo que devuelve el JMenuItem correspondiente al nameItem pasado como
+		 * argumento, o null sino existe dicho item
+		 * @param Frame
+		 * @param String
+		 * @return item:JMenuItem
+		 */
+		public static JMenuItem getJMenuItem(JFrame frame, String nameItem) {
+			JMenuItem item = null;
+
+			// Se consigue la barra de menu
+			JMenuBar barraMenu = frame.getJMenuBar();
+
+			// Se van consiguiendo los diferentes JMenus
+			for (int i = 0; i < barraMenu.getMenuCount(); i++) {
+				JMenu menuDeTurno = barraMenu.getMenu(i);
+
+				// Se van consiguiendo los diferentes JMenuItem del JMenu de turno
+				for (int j = 0; j < menuDeTurno.getItemCount(); j++) {
+					JMenuItem auxJMenuIten = menuDeTurno.getItem(j);
+
+					// Se compara el texto del JMenuItem de turno con el texto pasado como argumento
+					if(auxJMenuIten.getText().equals(nameItem)) {
+						item = auxJMenuIten;
+					}	
+				}
+			}
+
+			return item;
+		}
+		
+		
+		
+		
 	}
 
 
