@@ -106,9 +106,32 @@ public class GUI_Israel {
 			return item;
 		}
 		
-		
-		
-		
+		/**
+		 * Metodo que devuelve los JMenu que tiene una JMenuBar
+		 * @param JFrame
+		 * @return menus:JMenu[]
+		 */
+		public static JMenu[] getMenus(JFrame frame) throws Exception {
+			//Array con los menus existentes en la JMenuBar
+			JMenu[] menus;
+			
+			//Se consigue la barra de menu
+			JMenuBar barraMenu = frame.getJMenuBar(); 
+			if (barraMenu == null) {
+				throw new Exception();
+			}
+			
+			//Se consiguen los JMenus de la barra JMenuBar
+			MenuElement[] jMenus = barraMenu.getSubElements();
+			
+			//Se crea el array con los menus a devolver
+			menus = new JMenu[jMenus.length];
+			
+			for ( int i = 0; i < jMenus.length; i++) {
+				menus[i] = (JMenu) jMenus[i];
+			}			
+			return menus;
+		}	
 	}
 
 
