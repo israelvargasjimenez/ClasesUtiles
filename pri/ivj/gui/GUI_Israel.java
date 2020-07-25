@@ -82,7 +82,7 @@ public class GUI_Israel {
 		 * @param String
 		 * @return item:JMenuItem
 		 */
-		public static JMenuItem getJMenuItem(JFrame frame, String nameItem) {
+		public static JMenuItem getJMenuItem(JFrame frame, String nameItem) throws NullPointerException {
 			JMenuItem item = null;
 
 			// Se consigue la barra de menu
